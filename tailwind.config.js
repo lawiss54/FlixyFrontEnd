@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
   	extend: {
+  	  boxShadow: {
+        myShadow1: "4.1px -5px 0 0 rgb(221, 228, 239)",
+        myShadow2: "-4.1px -5px 0 0 rgb(221, 228, 239)",
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

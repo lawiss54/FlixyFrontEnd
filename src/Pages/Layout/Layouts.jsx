@@ -45,9 +45,8 @@ export const Layouts = () => {
       style={{
         width: '100vw',
         height: '100vh',
-        
-        
       }}
+      className="bg-[#DDE4EF]"
       >
         <Header style={{
             position: 'sticky',
@@ -75,6 +74,7 @@ export const Layouts = () => {
             justifyContent: 'center',
             alignalignItems: 'center',
             }}
+            className="bg-[#DDE4EF]"
           >
             <Outlet />
           </Content>

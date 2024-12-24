@@ -7,7 +7,7 @@ export const axiosClient = axios.create({
     'X-Requested-With': 'XMLHttpRequest',
     'Accept': 'application/json',
     'X-localization': Cookies.get("i18next") || 'fr',
-    'Breare': Cookies.get("authToken"),
+    
   }
 });
 

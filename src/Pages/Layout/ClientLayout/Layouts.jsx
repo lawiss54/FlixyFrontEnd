@@ -39,7 +39,7 @@ export const ClientLayouts = () => {
   }
 
   return (
-    <Layout className="min-h-screen w-full bg-gray-100">
+    <Layout className="min-h-screen w-full bg-[#DDE4EF]">
       {/* Header */}
       <Header style={{
             position: 'sticky',
@@ -55,7 +55,7 @@ export const ClientLayouts = () => {
       </Header>
 
       {/* Main Content */}
-      <Layout className="flex flex-col lg:flex-row h-full">
+      <Layout className="bg-[#DDE4EF] flex flex-col lg:flex-row h-full">
         {/* Sidebar */}
         
 
@@ -66,7 +66,7 @@ export const ClientLayouts = () => {
       </Layout>
 
       {/* Bottom Bar for smaller screens */}
-      <BottomBar className="lg:hidden fixed bottom-0 w-full bg-white shadow-lg" />
+      <BottomBar className="fixed bottom-0 w-full shadow-lg" />
     </Layout>
   );
 };
