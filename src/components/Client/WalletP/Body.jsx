@@ -1,0 +1,109 @@
+import react,{useState} from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { Loader2, Wallet, ArrowUpFromLine, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {FormWallet} from "./Form.jsx";
+import {useQueryClient} from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
+
+export const Body = () => {
+  
+  const[isOpen, setIsOpen] = useState(false);
+  
+  const queryClient = useQueryClient();
+  const userData = queryClient.getQueryData(["user"]);
+  const user = userData.data ;
+  
+  const {t} = useTranslation();
+  
+  const handlingOpenForm = () => {
+    if(!isOpen){
+      return setIsOpen(true);
+    }
+  };
+  
+  return(
+    <>
+    <Card className="bg-white bg-opacity-30 backdrop-blur-lg p-6 rounded-lg border border-white border-opacity-40 drop-shadow-lg">
+        <CardHeader>
+          <CardDescription>
+            <div className=" flex items-center space-x-4 rounded-md border p-4 border-blue-300">
+              <h2 className="font-extrabold text-xl text-white text-center">
+                {t("Gestion de portefeuille. Créditer de l'argent")}
+              </h2>
+            </div>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
+            <Wallet className="text-white" />
+            <div className="flex-1 space-y-1">
+              <p className="text-sm text-white font-medium leading-none">
+                {t("Identité du client : ")}<p className="text-2xl text-white "> {user.lname+' '+user.fname} </p>
+              </p>
+              <p className="text-sm text-white font-medium leading-none">
+                {t("Le solde du portefeuille")} : <p className="text-2xl text-white">{user.balance} {t("DA")}</p>
+              </p>
+            </div>
+          </div>
+          {!isOpen ? (
+            <>
+            
+            </>
+          ):(
+            <>
+            <motion.div 
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
+                <div className="flex flex-col space-y-4">
+                  <p className="text-sm text-white text-[16px] font-bold font-medium text-center leading-relaxed">
+                    {t("Transférez la somme demandée sur ce compte par Baridi Mob ou compte bancaire courant.")}
+                  </p>
+                  <p className="text-lg pt-5 text-white font-bold font-medium leading-relaxed">
+                    RIP Baridi Mob : 00799999002476295067
+                  </p>
+                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                    CCP : 24762950 Clé 66
+                  </p>
+                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                    Le titulaire : M.OUADDAH CHERIF
+                  </p>
+                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                    Frais de transfert : 30 DA
+                  </p>
+                  <div className=" flex text-center text-[18px] font-bold items-center space-x-4 rounded-md border border-blue-300 border-opacity-40 drop-shadow-lg p-4">
+                    {t("Après l’envoi, n’oubliez pas de transmettre le montant, le RIP ou le CCP utilisé, ainsi que la preuve de paiement, afin de traiter votre transaction rapidement.")}
+                  </div>
+                </div>
+              </div>
+              <div className=" flex items-center md:place-content-center space-x-4 rounded-md border p-4 border border-white border-opacity-40 drop-shadow-lg">
+                <FormWallet />
+              </div>
+            </motion.div>
+            </>
+          )}
+        </CardContent>
+        <CardFooter>
+          {!isOpen ? (
+            <>
+            <Button type='submit' onClick={handlingOpenForm} className="w-full">
+              <ArrowUpFromLine /> {t("Créditer le portefeuille")}
+              </Button>
+            </>
+          ):null
+          }
+        </CardFooter>
+    </Card>
+    </>
+  );
+};
