@@ -45,12 +45,11 @@ function Plans() {
   // التعامل مع plans بشكل مختلف إذا كان الرقم يبدأ بـ 03 أو 04
   const plansArray = (phone.startsWith("03") || phone.startsWith("04")) ? [plans] : plans;  // إذا كان الرقم يبدأ بـ 03 أو 04، نعرض كائن واحد فقط
   let offer = plansArray[0];
-  console.log(lineInfo);
+  
   // عند الإرسال
   const handlingSubmite = async (values) => {
     setStatus(true);
-    return await sendFlixy(data)
-      .then((res) => {
+    return await sendFlixy(data).then((res) => {
         toast({
           variant: res.data.alert.type,
           title: res.data.alert.title,
@@ -58,8 +57,7 @@ function Plans() {
         });
         setStatus(false);
         return queryClient.invalidateQueries({ queryKey: ["orders"] }) && queryClient.invalidateQueries({ queryKey: ["user"] });
-      })
-      .catch((e) => {
+      }).catch((e) => {
         toast({
           variant: e.response.data.alert.type,
           title: e.response.data.alert.title,
