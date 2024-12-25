@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 export const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    'X-Requested-With': 'XMLHttpRequest',
+    
     'Accept': 'application/json',
     'X-localization': Cookies.get("i18next") || 'fr',
     
@@ -19,5 +19,6 @@ axiosClient.interceptors.request.use((config) => {
   // تحديث اللغة من Cookies
   const currentLang = Cookies.get("i18next") || 'fr';
   config.headers['X-localization'] = currentLang;
+  config.headers['referer'] = "http://localhost:3000";
   return config;
 });
