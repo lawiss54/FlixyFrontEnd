@@ -122,7 +122,10 @@ export default {
           900: "#7A0736"
         }
   		}
-  	}
+  	},
+  	fontFamily: {
+  	  "primary": ["Gabarito", "serif"],
+  	},
   },
   plugins: [
     require("tailwindcss-animate"),

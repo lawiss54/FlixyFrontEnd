@@ -40,7 +40,7 @@ function App() {
   
   return(
     
-    <div className="bg-[#DDE4EF] bg-auto  mx-auto h-full w-full">
+    <div className="bg-[#DDE4EF] bg-auto font-primary  mx-auto h-full w-full">
       <ClientContext>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={route} 
