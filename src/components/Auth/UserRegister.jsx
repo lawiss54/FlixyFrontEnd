@@ -69,6 +69,7 @@ import { useTranslation } from "react-i18next";
     return await register(values).then(
       (value) => {
          if(value.status === 201){
+          Cookies.set('authToken', res.data.access_token);
           setAuthentication(true);
            //check status code if = 200 redirect user to flixy page
           isSubmitting ;
