@@ -7,15 +7,7 @@ import { motion } from "motion/react";
 
 export const Subscription = () => {
   
-  const {getPlansSubsc} = useClientContext();
-  const { data: plans, isLoading } = useQuery({
-    queryKey: ["plansSubc"],
-    queryFn: async () => await getPlansSubsc(),
-    staleTime: 5*60*1000,
-    cacheTime: 2*60*1000,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  
   
   return(
     <>
