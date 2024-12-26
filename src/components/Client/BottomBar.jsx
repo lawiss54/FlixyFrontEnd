@@ -54,11 +54,9 @@ export const BottomBar = () => {
         {/* القوائم */}
         {Menus.map((menu, i) => (
           <li key={i} className="w-16 flex justify-center items-center">
-            <Link to={menu.path}>
-              <a
-                className="flex flex-col items-center text-center pt-6"
-                onClick={() => setActive(i)} // تغيير القيمة عند الضغط
-              >
+            <Link className="flex flex-col items-center text-center pt-6"
+                onClick={() => setActive(i)} to={menu.path}>
+              
                 {/* الأيقونة */}
                 <span
                   className={`cursor-pointer duration-500 ${i === active && "-mt-9 text-white"} text-xl lg:text-2xl xl:text-3xl`}
@@ -75,7 +73,7 @@ export const BottomBar = () => {
                 >
                   {menu.name}
                 </span>
-              </a>
+            
             </Link>
           </li>
         ))}

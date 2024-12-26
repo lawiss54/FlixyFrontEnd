@@ -97,11 +97,11 @@ function Otp() {
         {/* خانات OTP */}
         {!Reponse ? (
           <>
-            <p className="text-center"> {t("Appuyez sur Envoyer pour que le code secret soit envoyé à votre boîte email.")} <br></br> <br></br> <p className="text-center font-bold">{t("Entrez votre code secret si vous l’avez déjà.")}</p></p>
+            <h3 className="text-center"> {t("Appuyez sur Envoyer pour que le code secret soit envoyé à votre boîte email.")} <br></br> <br></br> <div className="text-center font-bold">{t("Entrez votre code secret si vous l’avez déjà.")}</div></h3>
           </>
         ):(
           <>
-            <p className="text-center"> {Reponse} </p>
+            <h3 className="text-center"> {Reponse} </h3>
           </>
         )}
         

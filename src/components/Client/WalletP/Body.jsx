@@ -45,12 +45,12 @@ export const Body = () => {
           <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
             <Wallet className="text-white" />
             <div className="flex-1 space-y-1">
-              <p className="text-sm text-white font-medium leading-none">
+              <h3 className="text-sm text-white font-medium leading-none">
                 {t("Identité du client : ")}<p className="text-2xl text-white "> {user.lname+' '+user.fname} </p>
-              </p>
-              <p className="text-sm text-white font-medium leading-none">
+              </h3>
+              <h3 className="text-sm text-white font-medium leading-none">
                 {t("Le solde du portefeuille")} : <p className="text-2xl text-white">{user.balance} {t("DA")}</p>
-              </p>
+              </h3>
             </div>
           </div>
           {!isOpen ? (
@@ -66,21 +66,21 @@ export const Body = () => {
             >
               <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
                 <div className="flex flex-col space-y-4">
-                  <p className="text-sm text-white text-[16px] font-bold font-medium text-center leading-relaxed">
+                  <h3 className="text-sm text-white text-[16px] font-bold font-medium text-center leading-relaxed">
                     {t("Transférez la somme demandée sur ce compte par Baridi Mob ou compte bancaire courant.")}
-                  </p>
-                  <p className="text-lg pt-5 text-white font-bold font-medium leading-relaxed">
+                  </h3>
+                  <h3 className="text-lg pt-5 text-white font-bold font-medium leading-relaxed">
                     RIP Baridi Mob : 00799999002476295067
-                  </p>
-                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                  </h3>
+                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
                     CCP : 24762950 Clé 66
-                  </p>
-                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                  </h3>
+                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
                     Le titulaire : M.OUADDAH CHERIF
-                  </p>
-                  <p className="text-lg text-white font-bold font-medium leading-relaxed">
+                  </h3>
+                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
                     Frais de transfert : 30 DA
-                  </p>
+                  </h3>
                   <div className=" flex text-center text-[18px] font-bold items-center space-x-4 rounded-md border border-blue-300 border-opacity-40 drop-shadow-lg p-4">
                     {t("Après l’envoi, n’oubliez pas de transmettre le montant, le RIP ou le CCP utilisé, ainsi que la preuve de paiement, afin de traiter votre transaction rapidement.")}
                   </div>
