@@ -38,32 +38,36 @@ export const Body = () => {
       
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="col-span-12 row-span-6 row-start-1"
+      className="col-span-12 row-span-6 m-4"
     >
       <Card 
         isBlurred
-        className="rounded-3xl drop-shadow-lg bg-white"
+        className="grid grid-cols-12 grid-rows-6 rounded-3xl drop-shadow-lg bg-white"
         shadow="lg"
       >
         <CardHeader
-          className="flix justify-center "
+          className="col-span-10 row-span-2 col-start-3"
         >
           <Avatar 
-            className="flix translate-x-[-10px] h-[80px] w-[80px]" 
+            className="w-20 h-20 drop-shadow-2xl" 
             isBordered 
             src="https://i.pravatar.cc/150?u=a04258a2462d826712d" 
           />
         <div>
-          <h2 className="text-center font-bold "> {user.fname + ' ' + user.lname} </h2>
-          <h2 className="text-center font-bold translate-y-[20px]"> <ButtonActiveClient /></h2>
+          <h2 className="text-center font-bold pr-5 pl-5 drop-shadow-2xl"> {user.fname + ' ' + user.lname} </h2>
+          <h2 className="text-center font-bold mt-2 drop-shadow-2xl"> <ButtonActiveClient /></h2>
         </div>
         </CardHeader>
-        <CardBody className="flix">
-          <ChangeInfo />
+        
+        <CardBody className="col-span-12 row-span-6">
+          <div className="w-auto m-2">
+            <ChangeInfo />
+          </div>
+          
         </CardBody>
-        <CardFooter className="grid place-items-center">
+        <CardFooter className="col-span-10 col-start-3  drop-shadow-2xl">
             <Button
-              className="flex items-center justify-center gap-2 text-white bg-redDenger hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              className="gap-2 text-white bg-redDenger hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               onPress={onOpen}
             >
               
