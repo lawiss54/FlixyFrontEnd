@@ -3,6 +3,7 @@ import {Contant} from "../../components/Client/Subscription/Contant.jsx";
 import {useClientContext} from "../../Context/ClientContext.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
+import { motion } from "motion/react";
 
 export const Subscription = () => {
   
@@ -18,9 +19,13 @@ export const Subscription = () => {
   
   return(
     <>
-    <div className="place-items-center translate-y-21 md:translate-y-[60%]">
+    <motion.div 
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2 }}
+      className="grid lg:grid-cols-3 grid-cols-1 gap-10 2xl:px-28 m-10 rounded-2xl bg-gradient-to-b from-[#3289f0] to-[#3e56f0]  ">
       <Contant />
-    </div>
+    </motion.div>
     <Toaster />
     </>
   );
