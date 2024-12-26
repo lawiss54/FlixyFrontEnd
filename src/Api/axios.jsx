@@ -7,6 +7,7 @@ export const axiosClient = axios.create({
     
     'Accept': 'application/json',
     'X-localization': Cookies.get("i18next") || 'fr',
+    'Authorization': 'Bearer '+Cookies.get("authToken") || 1122222,
     
   }
 });
@@ -18,7 +19,10 @@ axiosClient.defaults.withXSRFToken = true ;
 axiosClient.interceptors.request.use((config) => {
   // تحديث اللغة من Cookies
   const currentLang = Cookies.get("i18next") || 'fr';
+  const token = Cookies.get("authToken") || 'fr';
   config.headers['X-localization'] = currentLang;
-  config.headers['referer'] = "http://localhost:3000";
+  config.headers['origin'] = "http://localhost:3000";
+  config.headers['Authorization'] ='Bearer '+token;
+  
   return config;
 });
