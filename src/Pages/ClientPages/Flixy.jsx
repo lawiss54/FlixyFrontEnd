@@ -11,7 +11,7 @@ import { FormTable } from "../../components/Client/FlixyP/Body/Tables.jsx";
 import { Toaster } from "@/components/ui/toaster";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox} from "@nextui-org/react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -30,14 +30,19 @@ function Flixy() {
   const [result, setResult] = useState({});
   const [alert, setAlert] = useState();
   // جلب الطلبات
+  const queryClient = useQueryClient();
+  const userData = queryClient.getQueryData(["user"]);
+  const user = userData.data ;
+  
   const { data: orders, isLoading: isLoadingOrders, refetch } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => await getOrders(),
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     refetchOnMount: false,
   });
+  
 
   // دالة الإرسال
   const onSubmit = async () => {
