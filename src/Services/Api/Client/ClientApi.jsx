@@ -3,8 +3,8 @@ import {axiosClient} from "./../../../Api/axios.jsx";
 
 export const ClientApi = {
   
-  csrfToken: async () => {
-    return await axiosClient.get('sanctum/csrf-cookie');
+  refresh: async () => {
+    return await axiosClient.get('refresh');
   },
   
   login: async (values) => {
@@ -16,6 +16,7 @@ export const ClientApi = {
   },
   
   getUser: async () => {
+    
     return await axiosClient.get('get-user');
   },
   
