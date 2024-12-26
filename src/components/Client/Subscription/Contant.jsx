@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
@@ -49,57 +50,59 @@ function Contant() {
   };
 
   return (
-    <div className="col-start-2 m-2 col-span-10 row-span-4 md:row-span-1 md:col-start-2 lg:col-start-3 md:col-span-8 lg:col-span-6 xl:col-span-4 p-6 flex justify-center items-center place-content-center rounded-3xl backdrop-blur-lg drop-shadow-2xl h-full w-full">
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full h-full"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-      >
-        <CarouselContent>
-          {Object.keys(plans || {}).map((key) => {
-            const plan = plans[key];
-            return (
-              <CarouselItem key={key}>
-                <Card className="flex flex-col items-center h-auto justify-around w-auto p-[20px_1px] m-[10px_0] text-center relative cursor-pointer p-2 rounded-3xl drop-shadow-md bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
-                  <CardContent className="content p-[20px]">
-                    <div className="price mb-5 md:ml-4 md:mr-4 md:p-2 text-white font-extrabold text-[30px] md:text-[40px] shadow-[0px_0px_10px_rgba(0,0,10,0.42)]">
-                      {plan.price} {t('DA')}
-                    </div>
-                    <br />
-                    <div className="description mb-5 text-white/80 mt-2 text-[15px] md:text-[24px]">
-                      {plan.description}
-                    </div>
-                    <br />
-                    <div className="title mb-5 text-center font-extrabold uppercase text-white mt-2 text-[25px] md:text-[40px] tracking-widest">
-                      {plan.title}
-                    </div>
-                    <br />
-                    <Button
-                      disabled={isLoading} // تعطيل الزر أثناء التحميل
-                      onClick={() => handlingButton(plan.id)}
-                      className={`select-none md:m-10 border-none outline-none text-white uppercase font-bold text-[0.75rem] p-[0.75rem_1.5rem] md:text-[30px] rounded-lg w-[90%] shadow-[0px_4px_18px_#2c3442] ${
-                        isLoading
-                          ? "bg-gray-400 cursor-not-allowed" // حالة التحميل
-                          : "bg-[#2196F3]"
-                      }`}
-                    >
-                      {!isLoading ? (
-                        <>{t("Abonnez-vous maintenant")}</> // النص العادي
-                      ) : (
-                        <Loader className="animate-spin" /> // دائرة التحميل
-                      )}
-                    </Button>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            );
-          })}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
+    <Carousel className="w-full max-w-xs">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+          <div className="flex flex-col border border-primary rounded-xl overflow-hidden bg-primary/5">
+            <div className="text-center text-white pt-10 border-1 border-gray-400 rounded-b-2xl drop-shadow-2xl">
+              <h5 className="text-xl font-medium">Basic Plan</h5>
+              <h2 className="text-5xl mt-8 mb-3 items-center align-middle">
+                <sup className="text-2xl align-middle">{t('DA')}</sup>3000
+                <span className="text-lg font-medium">{t(" / 1 Mois")}</span>
+              </h2>
+            </div>
+
+            <div className="p-10">
+              <ul className="mb-10 text-center text-white border-1 rounded border-gray-400 drop-shadow-2xl">
+                <li className="flex items-center justify-center py-2">
+                  
+                    <h3 className="pl-2 pr-2 font-semibold">{t("Pas besoin de sim Flexy pour travailler ! Profitez des recharges avec des frais réduits jusqu'à 0,95, soit 1000 DZD pour 950 DZD.")}</h3>
+                  </li>
+                <li className="flex items-center justify-center py-2">
+                  <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <h5 className="pl-2 pr-2 font-medium">{t("Flixy Djezzy")}</h5>
+                  </li>
+                  <li className="flex items-center justify-center py-2">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <h5 className="pl-2 pr-2 font-medium">{t("Flixy Mobilis")}</h5>
+                  </li>
+                  <li className="flex items-center justify-center py-2">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <h5 className="pl-2 pr-2 font-medium">{t("Flixy Ooredoo")}</h5>
+                  </li>
+                  <li className="flex items-center justify-center py-2">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <h5 className="pl-2 pr-2 font-medium">{t("Recharge ADSL")}</h5>
+                  </li>
+                  <li className=" flex items-center justify-center py-2">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <h5 className="pl-2 pr-2 font-medium">{t("Recharge 4G")}</h5>
+                  </li>
+                </ul>
+              <div className="flex justify-center">
+              <button onClick={handlingButton} className="py-3 px-6 font-medium  font-semibold border rounded-md border-primary hover:border-primary text-white bg-primary hover:bg-white hover:text-primary transition-all duration-500">
+                {t('Souscrivez sans attendre !')}
+              </button>
+            </div>
+          </div>
+        </div>
+        </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   );
 }
 
