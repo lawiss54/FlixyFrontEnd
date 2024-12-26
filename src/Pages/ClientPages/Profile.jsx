@@ -13,7 +13,7 @@ export const Profile = () => {
   
   return (
     <>
-    <div className="md:p-40 p-10 col-span-12 row-span-6 row-start-2 ">
+    <div className="grid grid-cols-12 grid-rows-6">
       <Body />
     </div>
       <Toaster />
