@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Loader2 } from "lucide-react";
+import Cookies from 'js-cookie';
 
 import {
   Carousel,
@@ -20,7 +21,7 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "@/hooks/use-toast";
 
 function Contant() {
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
   const {getPlansSubsc} = useClientContext();
   
   const { data, isLoading, isSuccess } = useQuery({
@@ -30,13 +31,17 @@ function Contant() {
     cacheTime: 2*60*1000,
     
   });
-
+    
   
   const {toast} = useToast();
   const { subscriptionPay } = useClientContext();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-   const handlingButton = async (e) => {
+   
+   
+  
+   
+  const handlingButton = async (e) => {
      setIsSubmitting(true);
     const key = e.currentTarget.getAttribute('data-key');
      // تفعيل حالة التحميل
@@ -65,9 +70,9 @@ function Contant() {
   return (
     <>
     <Carousel className="w-full max-w-xs">
-      <CarouselContent>
-        {data.data.plans.map((plan) => (
-          <CarouselItem textValue="fr" key={plan.id}>
+      <CarouselContent >
+        {data.data.plans.map((plan, index) => (
+          <CarouselItem key={index}>
           <div className="flex flex-col border border-primary rounded-xl overflow-hidden bg-primary/5">
             <div className="text-center text-white pt-10 border-1 border-gray-400 rounded-b-2xl drop-shadow-2xl">
               <h5 className="text-xl font-medium">{plan.title}</h5>
