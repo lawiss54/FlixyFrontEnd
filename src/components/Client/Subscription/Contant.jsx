@@ -1,10 +1,8 @@
-
 import React, { useState, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Loader2 } from "lucide-react";
 import Cookies from 'js-cookie';
-
 import {
   Carousel,
   CarouselContent,

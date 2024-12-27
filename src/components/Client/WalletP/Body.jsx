@@ -18,8 +18,8 @@ export const Body = () => {
   const[isOpen, setIsOpen] = useState(false);
   
   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
+  const user = queryClient.getQueryData(["user"]);
+  
   
   const {t} = useTranslation();
   

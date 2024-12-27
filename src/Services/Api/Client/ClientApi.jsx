@@ -16,8 +16,11 @@ export const ClientApi = {
   },
   
   getUser: async () => {
-    
     return await axiosClient.get('get-user');
+  },
+  
+  getfee: async () => {
+    return await axiosClient.get('get-fee');
   },
   
   resetPassword: async (values) => {

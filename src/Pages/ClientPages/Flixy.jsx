@@ -14,10 +14,11 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTr
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox} from "@nextui-org/react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import * as motion from "motion/react-client";
 
 
 
-function Flixy() {
+export const Flixy = () => {
   const { toast } = useToast();
   const { t } = useTranslation();
   const { getOrders, checkOrder } = useClientContext();
@@ -33,16 +34,17 @@ function Flixy() {
   const [alert, setAlert] = useState();
   // جلب الطلبات
   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
+  const user = queryClient.getQueryData(["user"]);
+  //const user = userData.data ;
   
   const { data: orders, isLoading: isLoadingOrders, refetch } = useQuery({
     queryKey: ["orders"],
-    queryFn: async () => await getOrders(),
+    queryFn: () => {return getOrders()},
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
     refetchOnMount: false,
+    retry: 1,
   });
   
 
@@ -62,17 +64,34 @@ function Flixy() {
       setInnerModalOpen(true);
   } 
   
+  
+  
+  
 
   // عرض حالة التحميل
   if (isLoadingOrders) {
     return (
       <>
-      <div className="flex items-center justify-center">
-        <div className="flex flex-wrap justify-center gap-4">
-          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+        <div className="min-h-screen flex items-center justify-center">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.5, easing: "ease-in-out"}}
+            className="relative w-12 h-12">
+            <motion.div 
+              initial={{scaleX: 1, originX: 0.5}}
+              animate={{ scaleX: [1, 3, 1] }}
+              transition={{ duration: 1, repeat: Infinity, repeatType: "loop"  }}
+              className="absolute top-16 left-0 w-12 h-1.5 bg-[#65C7EB] rounded-full">
+            </motion.div>
+            <motion.div
+              initial={{y: 0}}
+              animate={{ rotate: 360, y:[0 , -50, 0] }}
+              transition={{ duration: 1, repeat: Infinity, repeatType: "loop"  }}
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 rounded-md"></motion.div>
+          </motion.div>
         </div>
-      </div>
       </>
     );
   }
@@ -161,7 +180,7 @@ function Flixy() {
                     <div className="">
                       <div className="p-3 border-1 border-black rounded-3xl shadow drop-shadow-2xl">
                         <h3 className="text-[14px] font-bold p-1">{t('N° de téléphone: ')+result.MSSIDN}</h3>
-                        <h3 className="text-[14px] font-bold p-1">{t('Montant: '+result.topup_amount+'DA')}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{t('Montant: ')+result.topup_amount+t('DA')}</h3>
                         <h3 className="text-[14px] font-bold p-1">{t('Catégorie de recharge: ')+result.plan_code}</h3>
                         <h3 className="text-[14px] font-bold p-1">{t('Situation: ')+result.status}</h3>
                       </div>
@@ -219,4 +238,3 @@ function Flixy() {
   );
 }
 
-export { Flixy };

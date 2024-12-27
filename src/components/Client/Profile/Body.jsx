@@ -22,8 +22,8 @@ export const Body = () => {
   
   const {t} = useTranslation();
   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
+  const user = queryClient.getQueryData(["user"]);
+  
   
   const [isInnerModalOpen, setInnerModalOpen] = useState();
   const [isFetch, setFetch] = useState(false);

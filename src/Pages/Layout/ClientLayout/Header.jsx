@@ -15,18 +15,12 @@ import Cookies from 'js-cookie';
 
 
 export const HeaderNavClient = () => {
-   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
   
-  const {t} = useTranslation();
-  const {Authentication, logout, AuthToken, getUser, setLang, lang} = useClientContext();
-  
+   const {t} = useTranslation();
+  const {Authentication, setLang, logout, lang} = useClientContext();
   const navigate = useNavigate();
   
-  
-  
-  React.useEffect(() => {
+  useEffect(() => {
   const handleLanguageChange = (lang) => {
     setLang(Cookies.get("i18next") || 'fr'); // تحديث اللغة في الحالة
     document.documentElement.dir = i18n.dir(lang); // تحديث اتجاه النص بناءً على اللغة
@@ -41,8 +35,19 @@ export const HeaderNavClient = () => {
   return () => {
     // تنظيف الاشتراك عند إلغاء تحميل المكون
     i18n.off("languageChanged", handleLanguageChange);
+  
+    
   };
 }, [lang]);
+  
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueryData(["user"]);
+  
+  
+  
+  
+
+  
   
   let ChangeStatus = (path) => {
     let location = useLocation();

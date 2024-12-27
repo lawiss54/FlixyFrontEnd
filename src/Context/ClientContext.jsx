@@ -10,6 +10,7 @@ export const StaticContext = createContext({
   lineInfo: {},
   setLineInfo:{},
   getUser: () => {},
+  getfee: () => {},
   getOtp: () => {},
   login: (values)=>{},
   register: (values)=>{},
@@ -59,10 +60,11 @@ function ClientContext({children}){
 
   const getUser = async () => {
     return ClientApi.getUser().then((res)=>{
-      return res.data;
+      const data = res.data.data;
+      return data;
     }).catch((err)=>{
           setAuthentication(false);
-          window.localStorage.removeItem('Auth');
+         return window.localStorage.removeItem('Auth');
     });
   };
 
@@ -89,6 +91,9 @@ function ClientContext({children}){
   const getPlans = async (values) => {
     return ClientApi.getPlans(values);
   };
+  const getfee = async () => {
+    return ClientApi.getfee();
+  };
 
   const sendFlixy = async (values) => {
     return ClientApi.sendFlixy(values);
@@ -107,6 +112,7 @@ function ClientContext({children}){
          return dateB - dateA; // ترتيب تنازلي
       });
       setOrders(sortedOrders);
+      return sortedOrders;
     });
   };
   const getWalletTranc = async () => {
@@ -118,6 +124,8 @@ function ClientContext({children}){
          return dateB - dateA; // ترتيب تنازلي
       });
       setTransactions(sortedTransactions);
+      return sortedTransactions;
+      
     });
   };
 
@@ -162,6 +170,7 @@ function ClientContext({children}){
       resetPasswordByOtp,
       refresh,
       getPlans,
+      getfee,
       sendFlixy,
       getOrders,
       Orders,

@@ -144,7 +144,11 @@
     "Votre recharge mobile a été envoyée avec succès.": "تم إرسال رصيد الشحن بنجاح",
     "Votre commande est en cours de traitement. Vous recevrez le résultat dans un délai de 3 à 8 secondes.": "طلبك قيد المعالجة. ستتلقى النتيجة في غضون 3 إلى 8 ثوانٍ.",
     "Votre commande est en attente de traitement. Elle sera prise en charge dans un délai de 2 à 15 secondes.": "طلبك في انتظار المعالجة. سيتم التعامل معه في غضون 2 إلى 15 ثانية.",
-    "Liste des tarifs": "جدول الاسعار"
-    
+    "Liste des tarifs": "جدول الاسعار",
+    "Liste des frais de commission.": "قائمة رسوم العمولة.",
+    "Réseau mobile": "شبكة الهاتف المحمول",
+    "Nom de l'offre": "اسم العرض",
+    "Frais": "الرسوم",
+    "Pour 1000 DZD": "مقابل 1000 دينار جزائري"
 
 }

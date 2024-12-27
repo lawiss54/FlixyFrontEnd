@@ -20,8 +20,8 @@ function ChangeInfo(){
   const navigate = useNavigate();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
+  const user = queryClient.getQueryData(["user"]);
+  
 
   const formSchema = z.object({
     lname: z.string()

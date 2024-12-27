@@ -9,8 +9,7 @@ import { motion } from "motion/react";
 
 export const BodyOfHeader = () => {
   const queryClient = useQueryClient();
-  const userData = queryClient.getQueryData(["user"]);
-  const user = userData.data ;
+  const user = queryClient.getQueryData(["user"]);
   
   const {t} = useTranslation();
   return(

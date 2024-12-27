@@ -11,7 +11,7 @@ import {Register} from "../Pages/GuestPages/Register.jsx";
 import {Flixy} from "../Pages/ClientPages/Flixy.jsx";
 import {Profile} from "../Pages/ClientPages/Profile.jsx";
 import {Wallet} from "../Pages/ClientPages/Wallet.jsx";
-import {Table} from "../Pages/ClientPages/Table.jsx";
+import {TableFee} from "../Pages/ClientPages/Table.jsx";
 import {NotFound} from "../Pages/NotFound.jsx";
 import {Subscription} from "../Pages/ClientPages/subscription.jsx";
 
@@ -78,7 +78,7 @@ export const route = createBrowserRouter([
         },
         {
           path: TABLE_ROUTE,
-          element: <Table /> ,
+          element: <TableFee /> ,
         },
         {
           path: "*",

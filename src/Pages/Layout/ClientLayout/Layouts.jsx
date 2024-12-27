@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BottomBar } from "../../../components/Client/BottomBar.jsx";
 import Cookies from 'js-cookie';
-
+import * as motion from "motion/react-client";
 
 export const ClientLayouts = () => {
   const { Authentication, logout, getUser, refresh } = useClientContext();
@@ -26,39 +26,48 @@ export const ClientLayouts = () => {
       return navigate(LOGIN_ROUTE);
     }
   }, [Authentication]);
-
-  const { data: user, isLoading } = useQuery({
+  
+  
+  const { data, isLoading } = useQuery({
     queryKey: ["user"],
-    queryFn: async () => await getUser().catch((e)=>{
-      if(e.response.error === "Token not valid"){
-        return refresh().then((res)=>{
-          Cookies.set('authToken', res.data.access_token);
-        }).catch((e) => {
-          return logout();
-        });
-      }
-      
-      
-      
-    } ),
+    queryFn: async () => {return await getUser()},
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
-
+  
   if (isLoading) {
     return (
       <>
         <div className="min-h-screen flex items-center justify-center">
-          <div className="relative w-12 h-12">
-            <div className="absolute top-16 left-0 w-12 h-1.5 bg-[#65C7EB] rounded-full animate-shadow324"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 rounded-md animate-jump7456"></div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.5, easing: "ease-in-out"}}
+            className="relative w-12 h-12">
+            <motion.div 
+              initial={{scaleX: 1, originX: 0.5}}
+              animate={{ scaleX: [1, 3, 1] }}
+              transition={{ duration: 1, repeat: Infinity, repeatType: "loop"  }}
+              className="absolute top-16 left-0 w-12 h-1.5 bg-[#65C7EB] rounded-full">
+            </motion.div>
+            <motion.div
+              initial={{y: 0}}
+              animate={{ rotate: 360, y:[0 , -50, 0] }}
+              transition={{ duration: 1, repeat: Infinity, repeatType: "loop"  }}
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 rounded-md"></motion.div>
+          </motion.div>
         </div>
       </>
     );
   }
+
+  
+  
+
+  
 
   return (
     <Layout className="min-h-screen font-primary w-full bg-[#DDE4EF]">

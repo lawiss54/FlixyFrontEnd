@@ -25,8 +25,7 @@ import { useTranslation } from "react-i18next";
 export const FormFlixy = () => {
   
   const queryClient = useQueryClient();
-  const getData = queryClient.getQueryData(["user"]);
-  const user = getData?.data;
+  const user = queryClient.getQueryData(["user"]);
   
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const { toast } = useToast();
