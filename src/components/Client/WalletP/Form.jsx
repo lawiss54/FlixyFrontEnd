@@ -35,7 +35,6 @@ export const FormWallet = () => {
       ["image/jpeg", "image/png", "image/jpg"].includes(file.type),
     { message: t("Seules les images au format JPEG/PNG sont autorisés acceptés.") }
   )
-  .optional()
   .nullable(),
 });
   
