@@ -66,10 +66,14 @@ function Flixy() {
   // عرض حالة التحميل
   if (isLoadingOrders) {
     return (
-      <div className="flex flex-wrap justify-center gap-4">
-        <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-        <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <>
+      <div className="flex items-center justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+        </div>
       </div>
+      </>
     );
   }
 

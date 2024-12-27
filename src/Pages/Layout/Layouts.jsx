@@ -35,6 +35,12 @@ export const Layouts = () => {
    if(isLoading){
       return (
         <>
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="relative w-12 h-12">
+              <div className="absolute top-16 left-0 w-12 h-1.5 bg-[#65C7EB] rounded-full animate-shadow324"></div>
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 rounded-md animate-jump7456"></div>
+            </div>
+          </div>
         </>
       )
     }

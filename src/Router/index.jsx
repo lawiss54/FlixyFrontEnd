@@ -11,6 +11,7 @@ import {Register} from "../Pages/GuestPages/Register.jsx";
 import {Flixy} from "../Pages/ClientPages/Flixy.jsx";
 import {Profile} from "../Pages/ClientPages/Profile.jsx";
 import {Wallet} from "../Pages/ClientPages/Wallet.jsx";
+import {Table} from "../Pages/ClientPages/Table.jsx";
 import {NotFound} from "../Pages/NotFound.jsx";
 import {Subscription} from "../Pages/ClientPages/subscription.jsx";
 
@@ -22,11 +23,12 @@ import {Layouts} from "../Pages/Layout/Layouts.jsx";
 
 // const of path link 
 export const REGISTER_ROUTE = "/register";
-export const LOGIN_ROUTE = "/login";
+export const LOGIN_ROUTE = "/";
 // Guest path
 
 export const ABOUT_ROUTE = "/about";
 // Client path
+export const TABLE_ROUTE = "/table";
 export const FLIXY_ROUTE = "/flixy";
 export const PROFILE_ROUTE = "/profile";
 export const WALLET_ROUTE = "/wallet";
@@ -73,6 +75,10 @@ export const route = createBrowserRouter([
         {
           path: ABOUT_ROUTE,
           element: <About /> ,
+        },
+        {
+          path: TABLE_ROUTE,
+          element: <Table /> ,
         },
         {
           path: "*",

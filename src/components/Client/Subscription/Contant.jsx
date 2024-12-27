@@ -69,7 +69,7 @@ function Contant() {
   }
   return (
     <>
-    <Carousel className="w-full max-w-xs">
+    <Carousel className="w-full ">
       <CarouselContent >
         {data.data.plans.map((plan, index) => (
           <CarouselItem key={index}>

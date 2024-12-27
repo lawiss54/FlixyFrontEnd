@@ -150,14 +150,14 @@ export const HistoTable = () => {
                   <Transactionstatus status={order.status} />
                 </TableCell>
                 <TableCell className="text-center">
-                  <Button onClick={
+                  {!order.status === 'Succès' ? (<Button onClick={
                     () => {
                       toast({
                       variant: 'success',
                       title: t("L'administrateur a été informé avec succès"),
                       description: t("L'administrateur a été informé d'une nouvelle transaction. Elle sera examinée dans les plus brefs délais.")
                       })
-                    } }> {t('Accélérer le processus')} </Button>
+                    } }> {t('Accélérer le processus')} </Button>):null}
                 </TableCell>
                 
               </TableRow>

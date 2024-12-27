@@ -9,6 +9,23 @@ export default {
   ],
   theme: {
   	extend: {
+  	  animation: {
+        'jump7456': 'jump7456 1s ease-in-out infinite',
+        'shadow324': 'shadow324 1.5s ease-in-out infinite',
+      },
+      keyframes: {
+        jump7456: {
+          '0%': { transform: 'translateY(0) rotate(0)' },
+          '25%': { transform: 'translateY(9px) rotate(22.5deg)' },
+          '50%': { transform: 'translateY(18px) scale(1, .9) rotate(45deg)' },
+          '75%': { transform: 'translateY(9px) rotate(67.5deg)' },
+          '100%': { transform: 'translateY(0) rotate(90deg)' },
+        },
+        shadow324: {
+          '0%, 100%': { transform: 'scale(1, 1)' },
+          '50%': { transform: 'scale(1.2, 1)' },
+        },
+      },
   	  boxShadow: {
         myShadow1: "4.1px -5px 0 0 rgb(221, 228, 239)",
         myShadow2: "-4.1px -5px 0 0 rgb(221, 228, 239)",

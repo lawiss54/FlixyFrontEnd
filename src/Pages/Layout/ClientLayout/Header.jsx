@@ -4,7 +4,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Dropdown, Dropdo
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {HeaderLogo} from "../../../assets/HeaderLogo.jsx";
 import { Loader, LogIn } from "lucide-react";
-import {FLIXY_ROUTE, ABOUT_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, WALLET_ROUTE} from "../../../Router/index.jsx";
+import {FLIXY_ROUTE, ABOUT_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, WALLET_ROUTE, TABLE_ROUTE} from "../../../Router/index.jsx";
 import {useClientContext, StaticContext} from "../../../Context/ClientContext.jsx";
 import { useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -120,6 +120,11 @@ export const HeaderNavClient = () => {
                 <DropdownItem aria-label="Profile" key={PROFILE_ROUTE}>
                   <Link to={PROFILE_ROUTE} aria-current="page">
                     {t("Profile")}
+                  </Link>
+                </DropdownItem>
+                <DropdownItem aria-label="table" key={TABLE_ROUTE}>
+                  <Link to={TABLE_ROUTE} aria-current="page">
+                    {t("Liste des tarifs")}
                   </Link>
                 </DropdownItem>
                 <DropdownItem onClick={logout}>{t("Déconnexion")}</DropdownItem>
