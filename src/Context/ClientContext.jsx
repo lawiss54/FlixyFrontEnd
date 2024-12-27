@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 
 // create context
 export const StaticContext = createContext({
-  csrfToken: () => {},
+  refresh: () => {},
   lineInfo: {},
   setLineInfo:{},
   getUser: () => {},
@@ -53,8 +53,8 @@ function ClientContext({children}){
     return ClientApi.login(values);
   };
 
-  const csrfToken = async() => {
-    return ClientApi.csrfToken();
+  const refresh = async() => {
+    return ClientApi.refresh();
   };
 
   const getUser = async () => {
@@ -160,7 +160,7 @@ function ClientContext({children}){
       resetPassword,
       getOtp,
       resetPasswordByOtp,
-      csrfToken,
+      refresh,
       getPlans,
       sendFlixy,
       getOrders,

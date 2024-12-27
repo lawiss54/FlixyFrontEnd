@@ -9,9 +9,11 @@ import { HeaderNavClient } from "../ClientLayout/Header.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BottomBar } from "../../../components/Client/BottomBar.jsx";
+import Cookies from 'js-cookie';
+
 
 export const ClientLayouts = () => {
-  const { Authentication, logout, getUser } = useClientContext();
+  const { Authentication, logout, getUser, refresh } = useClientContext();
   const navigate = useNavigate();
   const { toast } = useToast();
   const { Header, Content } = Layout;
@@ -27,7 +29,18 @@ export const ClientLayouts = () => {
 
   const { data: user, isLoading } = useQuery({
     queryKey: ["user"],
-    queryFn: async () => await getUser(),
+    queryFn: async () => await getUser().catch((e)=>{
+      if(e.response.error === "Token not valid"){
+        return refresh().then((res)=>{
+          Cookies.set('authToken', res.data.access_token);
+        }).catch((e) => {
+          return logout();
+        });
+      }
+      
+      
+      
+    } ),
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
     refetchOnWindowFocus: false,
