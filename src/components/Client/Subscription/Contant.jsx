@@ -78,7 +78,7 @@ function Contant() {
               <h5 className="text-xl font-medium">{plan.title}</h5>
               <h2 className="text-5xl mt-8 mb-3 items-center align-middle"> 
                 <sup className="text-xl align-middle">DA</sup>{plan.price}
-                <span className="text-lg font-medium">{plan.duration} </span>
+                <span className="text-lg font-medium">/{plan.duration} jours</span>
               </h2>
             </div>
 
@@ -90,7 +90,7 @@ function Contant() {
                   </li>
                 <li className="flex items-center justify-center py-2">
                   <ion-icon name="shield-checkmark-outline"></ion-icon>
-                    <h5 className="pl-2 pr-2 font-medium">Flixy Djezzy"</h5>
+                    <h5 className="pl-2 pr-2 font-medium">Flixy Djezzy</h5>
                   </li>
                   <li className="flex items-center justify-center py-2">
                     <ion-icon name="shield-checkmark-outline"></ion-icon>
@@ -98,7 +98,7 @@ function Contant() {
                   </li>
                   <li className="flex items-center justify-center py-2">
                     <ion-icon name="shield-checkmark-outline"></ion-icon>
-                    <h5 className="pl-2 pr-2 font-medium">Flixy Ooredoo"</h5>
+                    <h5 className="pl-2 pr-2 font-medium">Flixy Ooredoo</h5>
                   </li>
                   <li className="flex items-center justify-center py-2">
                     <ion-icon name="shield-checkmark-outline"></ion-icon>
@@ -117,7 +117,7 @@ function Contant() {
                     </>
                   ):(
                     <>
-                    <Loader2 className="animate-spin" /> "En traitement"
+                    <Loader2 className="animate-spin" /> En traitement
                     </>
                   )}
                 </Button>
