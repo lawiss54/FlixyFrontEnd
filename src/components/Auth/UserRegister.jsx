@@ -34,6 +34,10 @@ import { useTranslation } from "react-i18next";
     .email(t("Veuillez entrer une adresse email valide dans le champ 'Email'.")),
   phone: z.coerce.number()
     .min(9, { message: t("Le champ 'Numéro de téléphone' est obligatoire et doit être valide.") }),
+  ref_code: z.string()
+    .min(4, {message: t("")})
+    .optional()
+    .nullable(),
   password: z.string()
     .min(6, { message: t("Veuillez entrer un mot de passe d'au moins 6 caractères.") }),
   password_confirmation: z.string()
@@ -58,7 +62,7 @@ import { useTranslation } from "react-i18next";
       phone: "",
       password: "",
       password_confirmation: "",
-      
+      ref_code: ""
     },
   });
   const {setError, formState} = form;
@@ -168,6 +172,19 @@ import { useTranslation } from "react-i18next";
               <FormLabel className="text-white">{t("Réécr.mot de passe")}</FormLabel>
               <FormControl className="text-black">
                 <Input style={{borderRadius:'10px' }} placeholder="******" type="password" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="ref_code"
+          render={({ field }) => (
+            <FormItem className="col-span-2">
+              <FormLabel className="block text-white">{t("Code de référence")}</FormLabel>
+              <FormControl className="w-full text-black">
+                <Input style={{borderRadius:'10px' }} placeholder="ref_xxxxx" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
