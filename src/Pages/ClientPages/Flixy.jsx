@@ -53,7 +53,6 @@ function Flixy() {
 
     try {
       const res = await checkOrder(data); // استدعاء API
-      console.log(res.data);
       setResult(res.data.data);
       if (result.hasOwnProperty("error")){
         setAlert(

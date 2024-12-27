@@ -1,4 +1,5 @@
 import {Chip} from "@nextui-org/react";
+import { useTranslation } from "react-i18next";
 
 export const ButtonInactifClient = () => {
   return(
@@ -9,7 +10,7 @@ export const ButtonInactifClient = () => {
         content: "drop-shadow shadow-black text-white",
       }}
     >
-      Abonnement Inactif
+      {t('Abonnement Inactif')}
 
     </Chip>
   )

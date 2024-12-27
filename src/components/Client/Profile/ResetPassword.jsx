@@ -52,7 +52,6 @@ function ResetPassword(){
          });
       }
     }).catch((err)=>{
-      console.log(err);
        if("alert" in err.response.data){
          let errorsReponse = err.response.data;
          toast({

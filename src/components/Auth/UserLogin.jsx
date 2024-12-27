@@ -53,7 +53,6 @@ const formSchema = z.object({
     return await login(values).then(
       (res) => {
         isSubmitting ;
-         console.log(res.data.access_token)
            Cookies.set('authToken', res.data.access_token);
            setAuthentication(true);
            //check status code if = 200 redirect user to flixy page

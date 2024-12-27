@@ -44,10 +44,6 @@ export const HeaderNavClient = () => {
   };
 }, [lang]);
   
-  
- 
-  //console.log(user)
-  
   let ChangeStatus = (path) => {
     let location = useLocation();
     if (location.pathname === path){
