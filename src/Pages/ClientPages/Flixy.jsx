@@ -27,7 +27,9 @@ function Flixy() {
   const [status, setStatus] = useState(false); // لمعرفة حالة الإرسال
   const [isInnerModalOpen, setInnerModalOpen] = useState(false);
   const handleInnerModalClose = () => setInnerModalOpen(false);
+  
   const [result, setResult] = useState({});
+  
   const [alert, setAlert] = useState();
   // جلب الطلبات
   const queryClient = useQueryClient();
@@ -51,34 +53,15 @@ function Flixy() {
     // بيانات الإرسال
     const data = { orderId };
 
-    try {
-      const res = await checkOrder(data); // استدعاء API
-      setResult(res.data.data);
-      if (result.hasOwnProperty("error")){
-        setAlert(
-        <Alert variant="destructive">
-          <Terminal className="h-4 w-4" />
-          <AlertTitle>{t("Problème détecté")}</AlertTitle>
-          <AlertDescription>
-            You can add components and dependencies to your app using the cli.
-          </AlertDescription>
-        </Alert>
-      );
-      }
+       await checkOrder(data).then((res) => {
+         setStatus(false);
+        setResult(res.data.data.topup);
+        
+      })
       
       setInnerModalOpen(true);
-    } catch (err) {
-      
-      let alert = err.response.data['alert'];
-        toast({
-           variant: alert.type ,
-           title: alert.title ,
-           description: alert.message ,
-         });
-    } finally {
-      setStatus(false); // إعادة الحالة إلى القيمة الافتراضية
-    }
-  };
+  } 
+  
 
   // عرض حالة التحميل
   if (isLoadingOrders) {
@@ -164,10 +147,56 @@ function Flixy() {
                 <ModalHeader className="flex flex-col gap-1">{t('Détails de la commande')}</ModalHeader>
                 <ModalBody>
                   {result.hasOwnProperty("error") ? (
+                    <>
                     <div className="">
                       <p> {result.error} </p>
                     </div>
-                  ):null}
+                    </>
+                  ):(
+                    <>
+                    <div className="">
+                      <div className="p-3 border-1 border-black rounded-3xl shadow drop-shadow-2xl">
+                        <h3 className="text-[14px] font-bold p-1">{t('N° de téléphone: ')+result.MSSIDN}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{t('Montant: '+result.topup_amount+'DA')}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{t('Catégorie de recharge: ')+result.plan_code}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{t('Situation: ')+result.status}</h3>
+                      </div>
+                      <div className="text-[14px] font-bold p-1 text-center m-7">
+                        {result.status === "PENDING" && (
+                          <p>
+                            {t(
+                              "Votre commande est en attente de traitement. Elle sera prise en charge dans un délai de 2 à 15 secondes."
+                            )}
+                          </p>
+                        )}
+                        {result.status === "HANDLING" && (
+                          <p>
+                            {t(
+                              "Votre commande est en cours de traitement. Vous recevrez le résultat dans un délai de 3 à 8 secondes."
+                            )}
+                          </p>
+                        )}
+                        {result.status === "FULFILLED" && (
+                          <p>{t("Votre recharge mobile a été envoyée avec succès.")}</p>
+                        )}
+                        {result.status === "REFUNDED" && (
+                          <p>{t("Votre recharge mobile a été remboursée avec succès.")}</p>
+                        )}
+                        {result.status === "UNKNOWN_ERROR" && (
+                          <p>
+                            {t(
+                              "Une erreur inattendue est survenue. Nous procédons à une vérification manuelle et vous tiendrons informé dans les 1 à 12 heures. Le statut passera à 'Effectué' ou 'Remboursé' après confirmation. Merci de votre patience."
+                            )}
+                          </p>
+                        )}
+                        {!result.status && (
+                          <p>{t("Statut inconnu. Veuillez réessayer plus tard.")}</p>
+                        )}
+                        
+                      </div>
+                    </div>
+                    </>
+                  )}
                 </ModalBody>
                 <ModalFooter>
                   

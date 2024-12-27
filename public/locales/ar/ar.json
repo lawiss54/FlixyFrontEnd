@@ -134,6 +134,16 @@
     "Flixy Ooredoo": "فليكسي اوريدو",
     "Recharge ADSL": "تعبئة ADSL",
     "Recharge 4G": "تعبئة LTE/4G",
-    "Souscrivez sans attendre !": "اشترك بدون انتضار!"
+    "Souscrivez sans attendre !": "اشترك بدون انتضار!",
+    "N° de téléphone: ": "رقم الهاتف: ",
+    "Catégorie de recharge: ": "صيغة الشحن: ",
+    "Situation: ": "الحالة: ",
+    "Montant: ": "المبلغ المرسل: ",
+    "Une erreur inattendue est survenue. Nous procédons à une vérification manuelle et vous tiendrons informé dans les 1 à 12 heures. Le statut passera à 'Effectué' ou 'Remboursé' après confirmation. Merci de votre patience.": "حدث خطأ غير متوقع. نحن نقوم بالتحقق يدويًا وسنبلغك في غضون 1 إلى 12 ساعة. ستتغير الحالة إلى 'منجز' أو 'مسترد' بعد التأكيد. شكرًا على صبرك.",
+    "Votre recharge mobile a été remboursée avec succès.": "تم استرداد رصيد الشحن بنجاح",
+    "Votre recharge mobile a été envoyée avec succès.": "تم إرسال رصيد الشحن بنجاح",
+    "Votre commande est en cours de traitement. Vous recevrez le résultat dans un délai de 3 à 8 secondes.": "طلبك قيد المعالجة. ستتلقى النتيجة في غضون 3 إلى 8 ثوانٍ.",
+    "Votre commande est en attente de traitement. Elle sera prise en charge dans un délai de 2 à 15 secondes.": "طلبك في انتظار المعالجة. سيتم التعامل معه في غضون 2 إلى 15 ثانية."
+    
 
 }
