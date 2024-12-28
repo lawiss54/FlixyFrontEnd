@@ -82,7 +82,7 @@ export const ClientLayouts = () => {
             height: '',
             boxShadow: "0 8px 12px rgba(0, 0, 0, 0.3)",
           }}>
-        <HeaderNavClient />
+        <HeaderNavClient className="z-50" />
       </Header>
 
       {/* Main Content */}
@@ -90,14 +90,14 @@ export const ClientLayouts = () => {
         {/* Sidebar */}
         
 
-        <Content className="flex-1 p-4 mb-20">
+        <Content className="flex-1 p-4 mb-20 overflow-auto">
           
           <Outlet />
         </Content>
       </Layout>
 
       {/* Bottom Bar for smaller screens */}
-      <BottomBar className="fixed bottom-0 w-full shadow-lg" />
+      <BottomBar className="fixed bottom-0 w-full shadow-lg z-50" />
     </Layout>
   );
 };

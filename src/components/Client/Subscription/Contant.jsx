@@ -18,7 +18,7 @@ import { Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useToast } from "@/hooks/use-toast";
 
-function Contant() {
+export const Contant = () => {
   const {t, i18n} = useTranslation();
   const {getPlansSubsc} = useClientContext();
   
@@ -67,11 +67,12 @@ function Contant() {
   }
   return (
     <>
-    <Carousel className="w-full ">
-      <CarouselContent >
+    
+    <Carousel className="max-h-[80vh] overflow-hidden row-start-3 col-start-2 col-span-10  md:row-span-1 md:col-start-3 lg:col-start-3 md:col-span-8 lg:col-span-6 xl:col-span-4 p-6 flex justify-center items-center place-content-center h-auto p-2 rounded-3xl backdrop-blur-lg drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
+      <CarouselContent className="">
         {data.data.plans.map((plan, index) => (
           <CarouselItem key={index}>
-          <div className="flex flex-col border border-primary rounded-xl overflow-hidden bg-primary/5">
+          <div className=" ">
             <div className="text-center text-white pt-10 border-1 border-gray-400 rounded-b-2xl drop-shadow-2xl">
               <h5 className="text-xl font-medium">{plan.title}</h5>
               <h2 className="text-5xl mt-8 mb-3 items-center align-middle"> 
@@ -81,7 +82,7 @@ function Contant() {
             </div>
 
             <div className="p-10">
-              <ul className="mb-10 text-center text-white border-1 rounded border-gray-400 drop-shadow-2xl">
+              <ul className="mb-5 text-center text-white border-1 rounded border-gray-400 drop-shadow-2xl">
                 <li className="flex items-center justify-center py-2">
                   
                     <h3 className="pl-2 pr-2 font-semibold">Pas besoin de sim Flexy pour travailler ! Profitez des recharges avec des frais réduits jusqu'à 0,95, soit 1000 DZD pour 950 DZD.</h3>
@@ -131,5 +132,3 @@ function Contant() {
   </>
   );
 }
-
-export { Contant };
