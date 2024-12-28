@@ -7,11 +7,17 @@ import {LOGIN_ROUTE, PROFILE_ROUTE} from "./../../Router/index.jsx";
 import {useEffect} from "react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 export const Register = () => {
   
   const {t} = useTranslation();
   return (
+    <>
+    <Helmet>
+        <title>{t('LaWiss | Inscription')}</title>
+        <meta name="description" content={t("Rechargez votre téléphone au tarif de gros grâce à notre application Lawiss. Avec une commission aussi basse que 0,95. Que vous soyez propriétaire d'un magasin ou d'un salon de cosmétique, offrez un service de recharge et de remplissage de cartes sans avoir besoin de cartes SIM.")} />
+    </Helmet>
     <motion.div 
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -40,5 +46,6 @@ export const Register = () => {
         </CardFooter>
       </Card>
     </motion.div>
+    </>
   );
 }

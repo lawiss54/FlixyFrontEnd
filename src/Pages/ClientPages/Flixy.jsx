@@ -15,7 +15,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox} from "@nextui-org/react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import * as motion from "motion/react-client";
-
+import { Helmet } from "react-helmet-async";
 
 
 export const Flixy = () => {
@@ -59,10 +59,10 @@ export const Flixy = () => {
          setStatus(false);
         setResult(res.data.data.topup);
         
-      })
+      });
       
       setInnerModalOpen(true);
-  } 
+  };
   
   
   
@@ -72,6 +72,10 @@ export const Flixy = () => {
   if (isLoadingOrders) {
     return (
       <>
+      <Helmet>
+        <title>{t('LaWiss | Flixy')}</title>
+        <meta name="description" content={t("Rechargez votre téléphone au tarif de gros grâce à notre application Lawiss. Avec une commission aussi basse que 0,95. Que vous soyez propriétaire d'un magasin ou d'un salon de cosmétique, offrez un service de recharge et de remplissage de cartes sans avoir besoin de cartes SIM.")} />
+      </Helmet>
         <div className="min-h-screen flex items-center justify-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -98,6 +102,11 @@ export const Flixy = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{t('LaWiss | Flixy')}</title>
+        <meta name="description" content={t("Rechargez votre téléphone au tarif de gros grâce à notre application Lawiss. Avec une commission aussi basse que 0,95. Que vous soyez propriétaire d'un magasin ou d'un salon de cosmétique, offrez un service de recharge et de remplissage de cartes sans avoir besoin de cartes SIM.")} />
+      </Helmet>
+    
       {/* المكونات الرئيسية */}
       <Header />
       <Body />
@@ -158,6 +167,7 @@ export const Flixy = () => {
         </Sheet>
       </div>
       {isInnerModalOpen ? (
+        <>
         <Modal 
           isOpen={isInnerModalOpen} 
           onOpenChange={handleInnerModalClose}
@@ -186,34 +196,46 @@ export const Flixy = () => {
                       </div>
                       <div className="text-[14px] font-bold p-1 text-center m-7">
                         {result.status === "PENDING" && (
+                          <>
                           <p>
                             {t(
                               "Votre commande est en attente de traitement. Elle sera prise en charge dans un délai de 2 à 15 secondes."
                             )}
                           </p>
+                          </>
                         )}
                         {result.status === "HANDLING" && (
+                          <>
                           <p>
                             {t(
                               "Votre commande est en cours de traitement. Vous recevrez le résultat dans un délai de 3 à 8 secondes."
                             )}
                           </p>
+                          </>
                         )}
                         {result.status === "FULFILLED" && (
+                          <>
                           <p>{t("Votre recharge mobile a été envoyée avec succès.")}</p>
+                          </>
                         )}
                         {result.status === "REFUNDED" && (
+                          <>
                           <p>{t("Votre recharge mobile a été remboursée avec succès.")}</p>
+                          </>
                         )}
                         {result.status === "UNKNOWN_ERROR" && (
+                          <>
                           <p>
                             {t(
                               "Une erreur inattendue est survenue. Nous procédons à une vérification manuelle et vous tiendrons informé dans les 1 à 12 heures. Le statut passera à 'Effectué' ou 'Remboursé' après confirmation. Merci de votre patience."
                             )}
                           </p>
+                          </>
                         )}
                         {!result.status && (
+                          <>
                           <p>{t("Statut inconnu. Veuillez réessayer plus tard.")}</p>
+                          </>
                         )}
                         
                       </div>
@@ -228,7 +250,7 @@ export const Flixy = () => {
             )}
           </ModalContent>
         </Modal> 
-
+        </>
       ):null}
 
       {/* جدول */}

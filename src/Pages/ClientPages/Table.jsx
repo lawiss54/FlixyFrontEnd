@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import {  Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import { useClientContext } from "../../Context/ClientContext.jsx";
 import * as motion from "motion/react-client";
+import { Helmet } from "react-helmet-async";
+
 
 function TableFee() {
   
@@ -21,12 +23,15 @@ function TableFee() {
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
     refetchOnWindowFocus: false,
-    refetchOnMount: true,
+    refetchOnMount: false,
   });
-  console.log(tablesFee)
   if(isLoading){
     return (
     <> 
+      <Helmet>
+        <title>{t('LaWiss | Tableau des commissions')}</title>
+        <meta name="description" content={t("Rechargez votre téléphone au tarif de gros grâce à notre application Lawiss. Avec une commission aussi basse que 0,95. Que vous soyez propriétaire d'un magasin ou d'un salon de cosmétique, offrez un service de recharge et de remplissage de cartes sans avoir besoin de cartes SIM.")} />
+      </Helmet>
       <div className="min-h-screen flex items-center justify-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -48,14 +53,15 @@ function TableFee() {
           </motion.div>
         </div>
     </>
-    )
-  }
-  if(error){
-    return (<>{error.message}</>)
+    );
   }
   
   return(
     <>
+    <Helmet>
+        <title>{t('LaWiss | Tableau des commissions')}</title>
+        <meta name="description" content={t("Rechargez votre téléphone au tarif de gros grâce à notre application Lawiss. Avec une commission aussi basse que 0,95. Que vous soyez propriétaire d'un magasin ou d'un salon de cosmétique, offrez un service de recharge et de remplissage de cartes sans avoir besoin de cartes SIM.")} />
+      </Helmet>
       <Table className="w-full md:h-[33vh]">
         <TableCaption>{t('Liste des frais de commission.')}</TableCaption>
           <TableHeader>
@@ -68,6 +74,7 @@ function TableFee() {
           </TableHeader>
           <TableBody>
           {tablesFee.map((row) => (
+            <>
             <TableRow key={row.code}>
               <TableCell className="font-medium">{row.operator}</TableCell>
               <TableCell>{row.name}</TableCell>
@@ -76,6 +83,7 @@ function TableFee() {
                   {1000*row.cost}{t('DA')}
               </TableCell>
             </TableRow>
+            </>
           ))}
           </TableBody>
         </Table>
