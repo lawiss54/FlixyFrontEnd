@@ -3,7 +3,7 @@ import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import {Avatar, AvatarGroup, AvatarIcon} from "@nextui-org/avatar";
 import {useClientContext} from "./../../../Context/ClientContext.jsx";
 import {ButtonActiveClient} from "./ButtonActiveClient.jsx";
-// import {ButtonInactifClient} from "./ButtonInactiveClient.jsx";
+ import {ButtonInactifClient} from "./ButtonInactiveClient.jsx";
 import {ChangeInfo} from "./Form.jsx";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
@@ -27,13 +27,28 @@ export const Body = () => {
   
   const [isInnerModalOpen, setInnerModalOpen] = useState();
   const [isFetch, setFetch] = useState(false);
+  
+  const [isActive, setIsActive] = useState(user.subscription_status);
+  
   const handleInnerModalOpen = () =>{
     
         setInnerModalOpen(true);
   };
   const handleInnerModalClose = () => setInnerModalOpen(false);
   
+  const checkStatus = () => {
+    if (isActive == 'subscribed'){
+      return true;
+      
+    }else{
+      return false
+    }
+    
+  }
+  
+  
   return (
+    <>
     <motion.div 
       
       animate={{ opacity: 1, y: 0 }}
@@ -51,11 +66,22 @@ export const Body = () => {
           <Avatar 
             className="w-20 h-20 drop-shadow-2xl" 
             isBordered 
-            src="https://i.pravatar.cc/150?u=a04258a2462d826712d" 
+            src="https://avatar.iran.liara.run/public" 
           />
         <div>
           <h2 className="text-center font-bold pr-5 pl-5 drop-shadow-2xl"> {user.fname + ' ' + user.lname} </h2>
-          <h2 className="text-center font-bold mt-2 drop-shadow-2xl"> <ButtonActiveClient /></h2>
+          <h2 className="text-center font-bold mt-2 drop-shadow-2xl"> 
+          {!checkStatus() ? (
+            <>
+              <ButtonInactifClient />
+            </>
+          ):(
+            <>
+              <ButtonActiveClient />
+            </>
+          )}
+          
+          </h2>
         </div>
         </CardHeader>
         
@@ -120,6 +146,7 @@ export const Body = () => {
       )}
       
      </motion.div>
+     </>
   );
   
 }

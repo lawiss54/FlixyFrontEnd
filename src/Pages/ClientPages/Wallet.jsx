@@ -5,10 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { useQuery } from "@tanstack/react-query";
 import { useClientContext} from "../../Context/ClientContext.jsx";
 import { Helmet } from "react-helmet-async";
-
+import { useTranslation } from "react-i18next";
 
 export const Wallet = () => {
-  
+  const {t} = useTranslation();
   const {getWalletTranc} = useClientContext();
   const { data: transactions, refetch, isSuccess, isError } = useQuery({
   queryKey: ["transactions"],

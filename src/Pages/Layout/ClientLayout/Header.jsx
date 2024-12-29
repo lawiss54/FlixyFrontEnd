@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import "../../../index.css";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
@@ -87,7 +88,7 @@ export const HeaderNavClient = () => {
         </NavbarContent>
         <NavbarContent justify="" className="w-auto">
           <NavbarItem>
-            <Dropdown placement="bottom-start" className="bg-white/50"  >
+            <Dropdown placement="bottom-start" className="bg-white/80"  >
               <DropdownTrigger>
                 <Button variant="bordered"><Languages /> {t("Langue")}</Button>
               </DropdownTrigger>
@@ -110,7 +111,7 @@ export const HeaderNavClient = () => {
                   as="button"
                   avatarProps={{
                     isBordered: true,
-                    src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+                    src: "https://avatar.iran.liara.run/public",
                   }}
                   className="transition-transform"
                   description={user.email}

@@ -2,6 +2,7 @@ import {Chip} from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 
 export const ButtonInactifClient = () => {
+  const { t } = useTranslation();
   return(
     <Chip
       variant="shadow"

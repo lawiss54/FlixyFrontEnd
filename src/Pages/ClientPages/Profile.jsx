@@ -5,9 +5,11 @@ import {LOGIN_ROUTE} from "./../../Router/index.jsx";
 import {Body} from "./../../components/Client/Profile/Body.jsx";
 import { Toaster } from "@/components/ui/toaster";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+
 
 export const Profile = () => {
-  
+  const { t } = useTranslation();
   
   
   return (

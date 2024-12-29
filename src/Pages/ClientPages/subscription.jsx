@@ -5,9 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 export const Subscription = () => {
-  
+  const { t } = useTranslation();
   
   
   return(

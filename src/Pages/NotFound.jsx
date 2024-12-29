@@ -1,7 +1,9 @@
 import { Helmet } from "react-helmet-async";
-
+import { useTranslation } from "react-i18next";
 
 export const NotFound = () => {
+  const {t} = useTranslation();
+  
   return (
     <>
     <Helmet>
