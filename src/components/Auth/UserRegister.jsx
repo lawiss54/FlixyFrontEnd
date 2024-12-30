@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {LOGIN_ROUTE} from "./../../Router/index.jsx";
+import {FLIXY_ROUTE} from "./../../Router/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import {useClientContext} from "../../Context/ClientContext.jsx";
 import react, {useState} from "react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-
+import Cookies from 'js-cookie';
 
 // تعريف شكل البيانات باستخدام Zod
 
@@ -35,7 +35,6 @@ import { useTranslation } from "react-i18next";
   phone: z.coerce.number()
     .min(9, { message: t("Le champ 'Numéro de téléphone' est obligatoire et doit être valide.") }),
   ref_code: z.string()
-    .min(4, {message: t("")})
     .optional()
     .nullable(),
   password: z.string()
@@ -70,40 +69,47 @@ import { useTranslation } from "react-i18next";
 
   // دالة onSubmit لعرض البيانات
   const onSubmit = async (values) => {
-    return await register(values).then(
-      (value) => {
-         if(value.status === 201){
-          Cookies.set('authToken', res.data.access_token);
-          setAuthentication(true);
-           //check status code if = 200 redirect user to flixy page
-          isSubmitting ;
-          return navigate(LOGIN_ROUTE);
-         }
-      }
-      // get error from api and output bellow password
-    ).catch(
-      (error) => {
-        let errorsReponse = error.response.data.errors;
-        for(let key in errorsReponse){
-          setError(key, {
-            message: errorsReponse[key],
-          });
-        
-        isSubmitting;
-        }
-      }
-    );
-  };
+  try {
+    isSubmitting; // تحديث حالة الإرسال
+    const res = await register(values);
 
+    if (res.status === 201) {
+      console.log(res.data.access_token);
+      Cookies.set("authToken", res.data.access_token);
+      setAuthentication(true);
+      navigate(FLIXY_ROUTE);
+    } else {
+      throw new Error("Unexpected response status");
+    }
+  } catch (error) {
+    if (error.response && error.response.data) {
+      const errorsResponse = error.response.data;
+
+      if ("errors" in errorsResponse) {
+        for (let key in errorsResponse.errors) {
+          setError(key, {
+            message: errorsResponse.errors[key],
+          });
+        }
+      } else {
+        setError("ref_code", {
+          message: errorsResponse.message,
+        });
+      }
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  } 
+};
   return (
     
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 grid grid-cols-2 gap-2 ">
+      <form onSubmit={form.handleSubmit(onSubmit)} className=" grid grid-cols-2 gap-2 ">
         <FormField
           control={form.control}
           name="fname"
           render={({ field }) => (
-            <FormItem className="translate-y-8">
+            <FormItem className="">
               <FormLabel className="text-white"> {t("Nom")} </FormLabel>
               <FormControl className="text-black">
                 <Input style={{borderRadius:'10px' }} placeholder={t("Met ton Nom.")} {...field} />
@@ -169,7 +175,7 @@ import { useTranslation } from "react-i18next";
           name="password_confirmation"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-white">{t("Réécr.mot de passe")}</FormLabel>
+              <FormLabel className="text-white">{t("Réécr...")}</FormLabel>
               <FormControl className="text-black">
                 <Input style={{borderRadius:'10px' }} placeholder="******" type="password" {...field} />
               </FormControl>

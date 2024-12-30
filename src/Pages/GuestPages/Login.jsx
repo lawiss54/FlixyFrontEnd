@@ -23,7 +23,7 @@ export const Login = () => {
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="m-8 md:m-32 md:mx-56"
+      className="sm:m-8  md:m-32 md:mx-56 md:w-[90%]"
     >
       <Card className="p-2 rounded-3xl drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
         <CardHeader>

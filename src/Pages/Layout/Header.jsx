@@ -1,3 +1,5 @@
+//import Dropdown from '../../../../../app/vendor/laravel/breeze/stubs/inertia-react-ts/resources/js/Components/Dropdown';
+
 import React, { useState, useEffect } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -53,12 +55,12 @@ export const HeaderNavbar = () => {
   
   return (
       <>
-        <Navbar className="w-[100%] h-[100%]">
+        <Navbar className="h-[100%]">
           <NavbarBrand>
             <HeaderLogo />
             <p className="font-bold text-inherit">Flixy</p>
           </NavbarBrand>
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarContent className="hidden sm:flex gap-4 sm:gab-1" justify="center">
             <NavbarItem isActive={ChangeStatus(FLIXY_ROUTE)}>
               <Link color="foreground" to={FLIXY_ROUTE}>
                 {t("Flixy")}
@@ -70,11 +72,11 @@ export const HeaderNavbar = () => {
               </Link>
             </NavbarItem>
           </NavbarContent>
-          <NavbarContent justify="" className="w-auto">
+          <NavbarContent className="w-auto">
           <NavbarItem>
-            <Dropdown placement="bottom-start" className="bg-white/50"  >
+            <Dropdown className=" sm:space-x-10 bg-white/50"  >
               <DropdownTrigger>
-                <Button variant="bordered"><Languages /> {t("Langue")}</Button>
+                <Button variant="bordered" className="" ><Languages /> {t("Langue")}</Button>
               </DropdownTrigger>
               <DropdownMenu onAction={(key) => i18n.changeLanguage(key)}>
                 <DropdownItem className="flex items-center space-x-2" key="ar">
@@ -88,8 +90,8 @@ export const HeaderNavbar = () => {
           </NavbarItem>
         </NavbarContent>
           <NavbarContent justify="end">
-            <NavbarItem size='lg'>
-              <Button size="lg" as={Link} to={LOGIN_ROUTE} variant="flat" className="inline-flex items-center px-2 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <NavbarItem className="hidden sm:flex" >
+              <Button as={Link} to={LOGIN_ROUTE} variant="flat" className="inline-flex items-center px-2 py-2.5 text-sm font-medium sm:font-extralight text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-20">
                <LogIn /> {t("Se connecter")}
               </Button>
             </NavbarItem>
