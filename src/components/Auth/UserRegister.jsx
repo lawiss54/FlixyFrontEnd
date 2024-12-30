@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {LOGIN_ROUTE} from "./../../Router/index.jsx";
+import {FLIXY_ROUTE} from "./../../Router/index.jsx";
 import { useNavigate } from "react-router-dom";
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import {useClientContext} from "../../Context/ClientContext.jsx";
 import react, {useState} from "react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-
+import Cookies from 'js-cookie';
 
 // تعريف شكل البيانات باستخدام Zod
 
@@ -35,9 +35,8 @@ import { useTranslation } from "react-i18next";
   phone: z.coerce.number()
     .min(9, { message: t("Le champ 'Numéro de téléphone' est obligatoire et doit être valide.") }),
   ref_code: z.string()
-    .min(4, {message: t("")})
-    .optional()
-    .nullable(),
+    .optional(),
+    
   password: z.string()
     .min(6, { message: t("Veuillez entrer un mot de passe d'au moins 6 caractères.") }),
   password_confirmation: z.string()
@@ -69,31 +68,40 @@ import { useTranslation } from "react-i18next";
   const { isSubmitting } = formState;
 
   // دالة onSubmit لعرض البيانات
-  const onSubmit = async (values) => {
-    return await register(values).then(
-      (value) => {
-         if(value.status === 201){
-          Cookies.set('authToken', res.data.access_token);
-          setAuthentication(true);
-           //check status code if = 200 redirect user to flixy page
-          isSubmitting ;
-          return navigate(LOGIN_ROUTE);
-         }
-      }
-      // get error from api and output bellow password
-    ).catch(
-      (error) => {
-        let errorsReponse = error.response.data.errors;
-        for(let key in errorsReponse){
+  
+ const onSubmit = async (values) => {
+  try {
+    isSubmitting; // تحديث حالة الإرسال
+    const res = await register(values);
+
+    if (res.status === 201) {
+      console.log(res.data.access_token);
+      Cookies.set("authToken", res.data.access_token);
+      setAuthentication(true);
+      navigate(FLIXY_ROUTE);
+    } else {
+      throw new Error("Unexpected response status");
+    }
+  } catch (error) {
+    if (error.response && error.response.data) {
+      const errorsResponse = error.response.data;
+
+      if ("errors" in errorsResponse) {
+        for (let key in errorsResponse.errors) {
           setError(key, {
-            message: errorsReponse[key],
+            message: errorsResponse.errors[key],
           });
-        
-        isSubmitting;
         }
+      } else {
+        setError("ref_code", {
+          message: errorsResponse.message,
+        });
       }
-    );
-  };
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  } 
+};
 
   return (
     

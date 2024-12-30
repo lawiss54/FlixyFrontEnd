@@ -21,7 +21,6 @@ axiosClient.interceptors.request.use((config) => {
   const currentLang = Cookies.get("i18next") || 'fr';
   const token = Cookies.get("authToken") || 'fr';
   config.headers['X-localization'] = currentLang;
-  config.headers['origin'] = "http://localhost:3000";
   config.headers['Authorization'] ='Bearer '+token;
   
   return config;
