@@ -50,28 +50,31 @@ const formSchema = z.object({
   
   // دالة onSubmit لعرض البيانات
   const onSubmit = async (values) => {
-    return await login(values).then(
-      (res) => {
+    
+    
+     return await login(values).then(
+       (res) => {
         isSubmitting ;
-           Cookies.set('authToken', res.data.access_token);
-           setAuthentication(true);
-           //check status code if = 200 redirect user to flixy page
-          return navigate(FLIXY_ROUTE);
          
-      }).catch(
-      (error) => {
-        
-        // save message error in var
-        setAuthentication(false);
-        logout();
-        let errorsReponse = error.response.data.message;
-        // set error to render if happen
-          setError('password', {
-            message: errorsReponse ,
-          });
+            Cookies.set('authToken', res.data.access_token);
+            setAuthentication(true);
+            //check status code if = 200 redirect user to flixy page
+           return navigate(FLIXY_ROUTE);
           
-      }
-    );
+       }).catch(
+       (error) => {
+         
+        //  save message error in var
+         setAuthentication(false);
+         logout();
+         let errorsReponse = error.response.data.message;
+         // set error to render if happen
+           setError('password', {
+             message: errorsReponse ,
+           });
+           
+       }
+     );
     
   };
 

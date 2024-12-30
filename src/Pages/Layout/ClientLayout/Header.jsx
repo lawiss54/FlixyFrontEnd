@@ -45,11 +45,6 @@ export const HeaderNavClient = () => {
   const user = queryClient.getQueryData(["user"]);
   
   
-  
-  
-
-  
-  
   let ChangeStatus = (path) => {
     let location = useLocation();
     if (location.pathname === path){

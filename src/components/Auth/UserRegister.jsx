@@ -69,20 +69,13 @@ import Cookies from 'js-cookie';
 
   // دالة onSubmit لعرض البيانات
   const onSubmit = async (values) => {
-  try {
     isSubmitting; // تحديث حالة الإرسال
-    const res = await register(values);
-
-    if (res.status === 201) {
-      console.log(res.data.access_token);
+    return await register(values).than((res)=>{
       Cookies.set("authToken", res.data.access_token);
       setAuthentication(true);
-      navigate(FLIXY_ROUTE);
-    } else {
-      throw new Error("Unexpected response status");
-    }
-  } catch (error) {
-    if (error.response && error.response.data) {
+      return navigate(FLIXY_ROUTE);
+    }).catch((error) => {
+      if (error.response && error.response.data) {
       const errorsResponse = error.response.data;
 
       if ("errors" in errorsResponse) {
@@ -96,11 +89,9 @@ import Cookies from 'js-cookie';
           message: errorsResponse.message,
         });
       }
-    } else {
-      console.error("Unexpected error:", error);
     }
-  } 
-};
+  })
+  }
   return (
     
     <Form {...form}>
