@@ -56,7 +56,7 @@ const formSchema = z.object({
        (res) => {
         isSubmitting ;
          
-            Cookies.set('authToken', res.data.access_token);
+            Cookies.set('authToken', res.data.access_token, { expires: 1 });
             setAuthentication(true);
             //check status code if = 200 redirect user to flixy page
            return navigate(FLIXY_ROUTE);

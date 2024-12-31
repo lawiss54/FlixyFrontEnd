@@ -72,7 +72,7 @@ import Cookies from 'js-cookie';
   const onSubmit = async (values) => {
     isSubmitting; // تحديث حالة الإرسال
     return await register(values).than((res)=>{
-      Cookies.set("authToken", res.data.access_token);
+      Cookies.set("authToken", res.data.access_token, { expires: 1 });
       setAuthentication(true);
       return navigate(FLIXY_ROUTE);
     }).catch((error) => {

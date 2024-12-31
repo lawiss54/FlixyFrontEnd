@@ -28,7 +28,7 @@ export const ClientLayouts = () => {
   }, [Authentication]);
   
   
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["user"],
     queryFn: () => {return  getUser()},
     staleTime: 5 * 60 * 1000,
@@ -36,6 +36,11 @@ export const ClientLayouts = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
+  
+  if(isError){
+    window.localStorage.removeItem('Auth');
+    return navigate(LOGIN_ROUTE);
+  }
   
   if (isLoading) {
     return (
