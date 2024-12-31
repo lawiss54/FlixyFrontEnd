@@ -200,10 +200,11 @@ export const Flixy = () => {
                     <>
                     <div className="">
                       <div className="p-3 border-1 border-black rounded-3xl shadow drop-shadow-2xl">
-                        <h3 className="text-[14px] font-bold p-1">{t('N° de téléphone: ')+result.MSSIDN}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{result.MSSIDN ? ( t('N° de téléphone: ')+result.MSSIDN):(t('N° de téléphone: ')+result.number)}</h3>
                         <h3 className="text-[14px] font-bold p-1">{t('Montant: ')+result.topup_amount+t('DA')}</h3>
-                        <h3 className="text-[14px] font-bold p-1">{t('Catégorie de recharge: ')+result.plan_code}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{result.plan_code ? (t('Catégorie de recharge: ')+result.plan_code):(t('Catégorie de recharge: ')+result.card_code)}</h3>
                         <h3 className="text-[14px] font-bold p-1">{t('Situation: ')+result.status}</h3>
+                        <h3 className="text-[14px] font-bold p-1">{t("Temps d'envoi: ")+new Date(result.created_at).toLocaleString('fr-FR') }</h3>
                       </div>
                       <div className="text-[14px] font-bold p-1 text-center m-7">
                         {result.status === "PENDING" && (

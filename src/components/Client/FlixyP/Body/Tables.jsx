@@ -14,6 +14,7 @@ export const FormTable = () => {
   
   const {t} = useTranslation();
 
+  const time = new Date();
   // حساب عدد الصفحات
   const totalPages = Math.ceil(sortedOrders.length / itemsPerPage);
 
@@ -157,6 +158,7 @@ export const FormTable = () => {
               <TableHead>{t('Statut')}</TableHead>
               <TableHead className="text-center">{t('N° de téléphone')}</TableHead>
               <TableHead className="text-center">{t('Le montant')}</TableHead>
+              <TableHead className="text-center">{t("Temps d'envoi")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -169,6 +171,7 @@ export const FormTable = () => {
                 </TableCell>
                 <TableCell className="text-center">{order.number}</TableCell>
                 <TableCell className="text-center">{order.amount} دج</TableCell>
+                <TableCell className="text-center">{ new Date(order.created_at).toLocaleString('fr-FR') } </TableCell>
               </TableRow>
             ))}
           </TableBody>
