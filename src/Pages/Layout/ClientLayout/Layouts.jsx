@@ -30,7 +30,7 @@ export const ClientLayouts = () => {
   
   const { data, isLoading } = useQuery({
     queryKey: ["user"],
-    queryFn: async () => {return await getUser()},
+    queryFn: () => {return  getUser()},
     staleTime: 5 * 60 * 1000,
     cacheTime: 2 * 60 * 1000,
     refetchOnWindowFocus: false,

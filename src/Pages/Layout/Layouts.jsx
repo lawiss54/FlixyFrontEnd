@@ -2,9 +2,6 @@ import {useState, useEffect, useRef} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
-
-
-
 import {HeaderNavbar} from "./Header.jsx";
 import {useClientContext} from "../../Context/ClientContext.jsx";
 import {FLIXY_ROUTE, ABOUT_ROUTE, LOGIN_ROUTE} from "../../Router/index.jsx";
@@ -47,40 +44,23 @@ export const Layouts = () => {
    
   return (
     <>
-      <Layout 
-      style={{
-        width: '100vw',
-        height: '100vh',
-      }}
-      className="bg-[#DDE4EF]"
-      >
+      <Layout className="min-h-screen overflow-x-hidden font-primary w-full bg-[#DDE4EF]" >
         <Header style={{
             position: 'sticky',
             top: '0',
             zIndex: '1000',
             backgroundColor: 'transparent',
             padding: '0',
-            width: '',
-            height: '',
+            width: '100%',
+            height: '100%',
             boxShadow: "0 8px 12px rgba(0, 0, 0, 0.3)",
           }}>
-            <HeaderNavbar />
+            <HeaderNavbar className="z-50" />
         </Header>
-        <Layout
-            style={{
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <Content style={{
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            placeItems: 'center',
-            justifyContent: 'center',
-            alignalignItems: 'center',
-            }}
-            className="bg-[#DDE4EF]"
+        
+        <Layout className="bg-[#DDE4EF] overflow-x-hidden overflow-y-hidden  flex flex-col lg:flex-row h-auto">
+          <Content 
+            className="flex-1 p-4 sm:mb-6 mb-20 overflow-auto font-primary justify-center items-center place-items-center"
           >
             <Outlet />
           </Content>

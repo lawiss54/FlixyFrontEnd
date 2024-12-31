@@ -4,11 +4,9 @@ import Cookies from 'js-cookie';
 export const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    
     'Accept': 'application/json',
     'X-localization': Cookies.get("i18next") || 'fr',
-    'Authorization': 'Bearer '+Cookies.get("authToken") || 1122222,
-    
+    'Authorization': 'Bearer '+Cookies.get("authToken") || 'fr',
   }
 });
 
@@ -19,9 +17,9 @@ axiosClient.defaults.withXSRFToken = true ;
 axiosClient.interceptors.request.use((config) => {
   // تحديث اللغة من Cookies
   const currentLang = Cookies.get("i18next") || 'fr';
-  const token = Cookies.get("authToken") || 'fr';
   config.headers['X-localization'] = currentLang;
-  config.headers['Authorization'] ='Bearer '+token;
+  config.headers['Authorization'] = 'Bearer '+Cookies.get("authToken") ;
+
   
   return config;
 });

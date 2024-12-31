@@ -44,24 +44,25 @@ export const Flixy = () => {
     cacheTime: 2 * 60 * 1000,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
-    retry: 1,
+    retry: 2,
   });
   
-
+  const [isLouading, setIsLouading] = useState(false)
   // دالة الإرسال
   const onSubmit = async () => {
-    setStatus(true); // تعيين الحالة للإشارة إلى أن الإرسال قيد التنفيذ
+     // تعيين الحالة للإشارة إلى أن الإرسال قيد التنفيذ
 
     // بيانات الإرسال
     const data = { orderId };
-
+      setStatus(true);
        await checkOrder(data).then((res) => {
-         setStatus(false);
-        setResult(res.data.data.topup);
         
-      });
-      
-      setInnerModalOpen(true);
+         setResult(res.data.data.topup);
+        
+      })
+        
+        setInnerModalOpen(true);
+        setStatus(false);
   };
   
   
@@ -112,12 +113,21 @@ export const Flixy = () => {
       <Body />
 
       {/* أزرار التفاعل */}
-      <div className="mt-8 flex items-center justify-center gap-4">
+      <div className="mt-4 flex items-center justify-center gap-4">
         <Button
-          onClick={() => refetch()} // إعادة جلب الطلبات
-          className="font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+          onClick={
+            
+            async() => {
+              setIsLouading(true)
+              await refetch()
+              setIsLouading(false)
+            }
+            
+          } // إعادة جلب الطلبات
+          className={`mt-2 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ${isLouading ? "opacity-50 pointer-events-none":""}`}
           variant="outline"
         >
+        {isLouading && <Loader2 className="my-2 mx-2 animate-spin" />}
           {t("Rafraîchir")}
         </Button>
 
@@ -237,15 +247,11 @@ export const Flixy = () => {
                           <p>{t("Statut inconnu. Veuillez réessayer plus tard.")}</p>
                           </>
                         )}
-                        
                       </div>
                     </div>
                     </>
                   )}
                 </ModalBody>
-                <ModalFooter>
-                  
-                </ModalFooter>
               </>
             )}
           </ModalContent>
