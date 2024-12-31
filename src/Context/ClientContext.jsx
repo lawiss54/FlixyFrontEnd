@@ -48,6 +48,8 @@ function ClientContext({children}){
   
   const [lang, setLang] = useState(Cookies.get("i18next") || "fr");
   
+  
+  
   // make login
   const login = async(values) => {
     return ClientApi.login(values);
@@ -61,9 +63,6 @@ function ClientContext({children}){
     return ClientApi.getUser().then((res)=>{
       const data = res.data.data;
       return data;
-    }).catch((err)=>{
-          setAuthentication(false);
-         return window.localStorage.removeItem('Auth');
     });
   };
 

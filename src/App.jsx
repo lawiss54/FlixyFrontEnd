@@ -44,11 +44,13 @@ function App() {
       <ClientContext>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <RouterProvider router={route} 
-              future={{
-                v7_startTransition: true,
-              }}
-            />
+            
+              <RouterProvider router={route} 
+                future={{
+                  v7_startTransition: true,
+                }}
+              />
+            
           </QueryClientProvider>
         </HelmetProvider>
       </ClientContext>

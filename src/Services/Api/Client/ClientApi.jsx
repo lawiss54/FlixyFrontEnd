@@ -4,7 +4,7 @@ import {axiosClient} from "./../../../Api/axios.jsx";
 export const ClientApi = {
   
   refresh: async () => {
-    return await axiosClient.get('refresh');
+    return await axiosClient.post('refresh');
   },
   
   login: async (values) => {
