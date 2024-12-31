@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FLIXY_ROUTE, PROFILE_ROUTE, WALLET_ROUTE, SUBSCRIPTION_ROUTE, ABOUT_ROUTE } from "../../Router/index.jsx";
 import i18next from 'i18next'; // استخدام مكتبة i18next
+import { useTranslation } from "react-i18next";
 
 export const BottomBar = () => {
+  const {t} = useTranslation();
+  
   const Menus = [
-    { name: "Profile", icon: "finger-print-outline", dis: "translate-x-0", disRtl: "translate-x-[0%]", path: PROFILE_ROUTE },
-    { name: "Wallet", icon: "wallet-outline", dis: "translate-x-[120%] md:translate-x-[325%]", disRtl: "translate-x-[-120%] md:translate-x-[-325%]", path: WALLET_ROUTE },
-    { name: "Flixy", icon: "apps-outline", dis: "translate-x-[242%] md:translate-x-[654%]", disRtl: "translate-x-[-242%] md:translate-x-[-654%]", path: FLIXY_ROUTE },
-    { name: "Subscription", icon: "key-outline", dis: "translate-x-[374%] md:translate-x-[980%]", disRtl: "translate-x-[-374%] md:translate-x-[-980%]", path: SUBSCRIPTION_ROUTE },
-    { name: "Contact", icon: "mail-outline", dis: "translate-x-[485%] md:translate-x-[1305%]", disRtl: "translate-x-[-485%] md:translate-x-[-1305%]", path: ABOUT_ROUTE },
+    { name: t("Profil"), icon: "finger-print-outline", dis: "translate-x-0", disRtl: "translate-x-[0%]", path: PROFILE_ROUTE },
+    { name: t("Solde"), icon: "wallet-outline", dis: "translate-x-[120%] md:translate-x-[325%]", disRtl: "translate-x-[-120%] md:translate-x-[-325%]", path: WALLET_ROUTE },
+    { name: t("Flixy"), icon: "apps-outline", dis: "translate-x-[242%] md:translate-x-[654%]", disRtl: "translate-x-[-242%] md:translate-x-[-654%]", path: FLIXY_ROUTE },
+    { name: t("Abonnement"), icon: "key-outline", dis: "translate-x-[364%] md:translate-x-[980%]", disRtl: "translate-x-[-364%] md:translate-x-[-980%]", path: SUBSCRIPTION_ROUTE },
+    { name: t("Contact"), icon: "mail-outline", dis: "translate-x-[485%] md:translate-x-[1305%]", disRtl: "translate-x-[-485%] md:translate-x-[-1305%]", path: ABOUT_ROUTE },
   ];
 
   const [active, setActive] = useState(2); // القيمة الافتراضية هي الأيقونة رقم 2 (Flixy)
@@ -59,7 +62,7 @@ export const BottomBar = () => {
               
                 {/* الأيقونة */}
                 <span
-                  className={`cursor-pointer duration-500 ${i === active && "-mt-9 text-white"} text-xl lg:text-2xl xl:text-3xl`}
+                  className={`cursor-pointer duration-500 ${i === active && "-mt-14 text-white"} text-xl lg:text-2xl xl:text-3xl`}
                 >
                   <ion-icon name={menu.icon}></ion-icon>
                 </span>
@@ -67,7 +70,7 @@ export const BottomBar = () => {
                 <span
                   className={`${
                     active === i
-                      ? "translate-y-2 duration-700 opacity-100"
+                      ? "translate-y-5 duration-700 opacity-100"
                       : "opacity-0 translate-y-10"
                   } text-sm lg:text-base`}
                 >
