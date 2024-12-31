@@ -180,6 +180,7 @@ export const Flixy = () => {
         <>
         <Modal 
           isOpen={isInnerModalOpen} 
+          hideCloseButton
           onOpenChange={handleInnerModalClose}
           placement="center"
           className="z-[2000]"
