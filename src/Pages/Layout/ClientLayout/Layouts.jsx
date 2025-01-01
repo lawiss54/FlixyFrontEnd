@@ -75,7 +75,7 @@ export const ClientLayouts = () => {
   
 
   return (
-    <Layout className="min-h-screen font-primary w-full bg-[#DDE4EF]">
+    <Layout className="min-h-screen overflow-x-hidden font-primary w-full bg-[#DDE4EF]">
       {/* Header */}
       <Header style={{
             position: 'sticky',

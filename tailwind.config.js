@@ -8,6 +8,13 @@ export default {
       "./src/**/**/**/**/**/**/**/**.{ts,tsx,js,jsx}",
   ],
   theme: {
+    screens: {
+        'xs': '0px',        // Extra Small Devices
+        'sm': '576px',      // Small Devices
+        'md': '768px',      // Medium Devices
+        'lg': '992px',      // Large Devices
+        'xl': '1200px',     // Extra Large (الافتراضي)
+      },
   	extend: {
   	  animation: {
         'jump7456': 'jump7456 1s ease-in-out infinite',

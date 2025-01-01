@@ -47,7 +47,7 @@
     "input-otp": "^1.4.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.456.0",
-    "motion": "^11.11.17",
+    "motion": "^11.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flagkit": "^2.0.4",

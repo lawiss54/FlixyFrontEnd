@@ -23,13 +23,11 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use(
   (response) => {
     // التحقق من وجود التوكن الجديد في Header
-    const authorizationHeader = response.headers['authorization'];
-    if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
-      // استخراج التوكن الجديد
-      const refreshedToken = authorizationHeader.split(' ')[1];
+    const token = response.data.access_token;
+    if (token) {
       
       // تحديث التوكن في الكوكيز
-      Cookies.set("authToken", refreshedToken, { expires: 7 }); // تخزين التوكن الجديد
+      Cookies.set("authToken", response.data.access_token, { expires: 1 }); // تخزين التوكن الجديد
     }
     return response;
   },

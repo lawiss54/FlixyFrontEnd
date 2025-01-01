@@ -31,8 +31,8 @@ export const Body = () => {
   
   return(
     <>
-    <Card className="bg-white bg-opacity-30 backdrop-blur-lg p-6 rounded-lg border border-white border-opacity-40 drop-shadow-lg">
-        <CardHeader>
+    <Card className="bg-white bg-opacity-30 backdrop-blur-lg p-6 rounded-lg border border-white border-opacity-40 drop-shadow-lg w-full grid grid-cols-12">
+        <CardHeader className="col-span-12">
           <CardDescription>
             <div className=" flex items-center space-x-4 rounded-md border p-4 border-blue-300">
               <h2 className="font-extrabold text-xl text-white text-center">
@@ -41,12 +41,12 @@ export const Body = () => {
             </div>
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4">
-          <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
+        <CardContent className=" col-span-12">
+          <div className=" flex items-center  rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
             <Wallet className="text-white" />
-            <div className="flex-1 space-y-1">
+            <div className="flex-1">
               <h3 className="text-sm text-white font-medium leading-none">
-                {t("Identité du client : ")}<p className="text-2xl text-white "> {user.lname+' '+user.fname} </p>
+                {t("Identité du client : ")}<p className="sm:text-[18px] md:[24px] text-white "> {user.lname+' '+user.fname} </p>
               </h3>
               <h3 className="text-sm text-white font-medium leading-none">
                 {t("Le solde du portefeuille")} : <p className="text-2xl text-white">{user.balance} {t("DA")}</p>
@@ -93,7 +93,7 @@ export const Body = () => {
             </>
           )}
         </CardContent>
-        <CardFooter>
+        <CardFooter className="col-span-12">
           {!isOpen ? (
             <>
             <Button type='submit' onClick={handlingOpenForm} className="w-full">

@@ -108,15 +108,23 @@ export const HeaderNavClient = () => {
                     isBordered: true,
                     src: "https://avatar.iran.liara.run/public",
                   }}
-                  className="transition-transform"
-                  description={user.email}
-                  name={user.fname + " " + user.lname}
+                  
+                  className="transition-transform "
+                  description={
+                    <p className="xs:hidden">{user.email}</p>
+                    
+                  }
+                  name={
+                    <p className="xs:hidden">
+                      {user.fname + " " + user.lname}
+                    </p>
+                  }
                 />
               </DropdownTrigger>
               <DropdownMenu variant="flat">
                 <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-bold">{t("Connecté en tant que")}</p>
-                  <p className="font-bold">{user.fname + " " + user.lname}</p>
+                  <p className="font-bold  ">{t("Connecté en tant que")}</p>
+                  <p className="font-bold ">{user.fname + " " + user.lname}</p>
                 </DropdownItem>
                 <DropdownItem aria-label="Profile" key={PROFILE_ROUTE}>
                   <Link to={PROFILE_ROUTE} aria-current="page">
