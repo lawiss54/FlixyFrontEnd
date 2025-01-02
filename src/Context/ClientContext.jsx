@@ -12,6 +12,7 @@ export const StaticContext = createContext({
   getUser: () => {},
   getfee: () => {},
   getOtp: () => {},
+  sendMessage: (values) => {},
   login: (values)=>{},
   register: (values)=>{},
   updateUser: (values)=>{},
@@ -137,6 +138,9 @@ function ClientContext({children}){
   const subscriptionPay = async (values) => {
     return ClientApi.subscriptionPay(values);
   };
+  const sendMessage = async (values) => {
+    return ClientApi.sendMessage(values);
+  };
   
   // make function for logout
   const logout = async () => {
@@ -183,7 +187,8 @@ function ClientContext({children}){
       setLang,
       checkOrder,
       Transactions,
-      getWalletTranc
+      getWalletTranc,
+      sendMessage
     }} >
       {children}
     </StaticContext.Provider>

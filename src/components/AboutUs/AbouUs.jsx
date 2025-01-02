@@ -20,7 +20,7 @@ export const AboutUs = () => {
               transition={{ ease: "easeOut", duration: 1 }}
               className="items-center drop-shadow-2xl" src="https://doodleipsum.com/700/flat?i=e536a9b352c69c886a7c1e147f726aa4" />
           </div>
-          <div className="row-span-5 mt-5 ml-2 mr-2 col-span-6 drop-shadow-lg bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
+          <div className="row-span-5 xs:mt-1 mt-5 ml-2 mr-2 col-span-6 drop-shadow-lg bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
             <div className="text-center xs:text-[9px] sm:text-[12px] md:text-[16px] font-bold p-1 md:mt-20">
               <h2>{t('Contactez-nous')}</h2>
             </div>

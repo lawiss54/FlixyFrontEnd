@@ -11,20 +11,23 @@ import { Loader, Send } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-
+import {useClientContext} from "../../Context/ClientContext.jsx";
+import { useToast } from "@/hooks/use-toast";
 
 
 export const ContactUs = () => {
   const {t} = useTranslation();
   
+  const {sendMessage} = useClientContext();
+  const { toast } = useToast();
   const formSchema = z.object({
-  name: z.string()
-    .min(3, { message: t("Le champ Votre Nom est obligatoire.") }),
-  sujet: z.string()
-    .min(6, { message: t("Indiquez le Sujet Principal") }),
-  message: z.string()
-    .min(15, { message: t("Précisez Votre Idée") }),
-});
+    name: z.string()
+      .min(3, { message: t("Le champ Votre Nom est obligatoire.") }),
+    sujet: z.string()
+      .min(6, { message: t("Indiquez le Sujet Principal") }),
+    message: z.string()
+      .min(15, { message: t("Précisez Votre Idée") })
+  });
   
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -38,7 +41,21 @@ export const ContactUs = () => {
   const { isSubmitting } = formState;
   
   const onSubmit = async (values) => {
-    
+    return await sendMessage(values).then((res) => {
+      let alert = res.data.alert;
+        toast({
+           variant: alert.type ,
+           title: alert.title ,
+           description: alert.message ,
+         });
+    }).catch((err) => {
+      let alert = err.response.data['alert'];
+        toast({
+           variant: alert.type ,
+           title: alert.title ,
+           description: alert.message ,
+         });
+    });
   };
   
   return (
@@ -80,7 +97,7 @@ export const ContactUs = () => {
             <FormItem>
               <FormLabel className="text-white">{t("Message")}</FormLabel>
               <FormControl className="text-black">
-                <Textarea style={{borderRadius:'10px' }} className="text-[11px]" placeholder={t("Contenu du Message")}  />
+                <Textarea style={{borderRadius:'10px' }} className="text-[11px]" placeholder={t("Contenu du Message")}  {...field} />
               </FormControl>
                 <AlertDescription>
                   <FormMessage />

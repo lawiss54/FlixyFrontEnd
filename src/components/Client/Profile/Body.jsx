@@ -41,10 +41,10 @@ export const Body = () => {
       return true;
       
     }else{
-      return false
+      return false;
     }
     
-  }
+  };
   
   
   return (
@@ -61,7 +61,7 @@ export const Body = () => {
         shadow="lg"
       >
         <CardHeader
-          className="col-span-10 row-span-2 col-start-3"
+          className="col-span-10 row-span-2 col-start-3 xs:col-start-2"
         >
           <Avatar 
             className="w-20 h-20 drop-shadow-2xl" 
@@ -70,7 +70,7 @@ export const Body = () => {
           />
         <div>
           <h2 className="text-center font-bold pr-5 pl-5 drop-shadow-2xl"> {user.fname + ' ' + user.lname} </h2>
-          <h2 className="text-center font-bold mt-2 drop-shadow-2xl"> 
+          <h2 className="text-center font-bold mt-2 pl-4 drop-shadow-2xl"> 
           {!checkStatus() ? (
             <>
               <ButtonInactifClient />
@@ -86,14 +86,14 @@ export const Body = () => {
         </CardHeader>
         
         <CardBody className="col-span-12 row-span-6">
-          <div className="w-auto m-2">
+          <div className="w-auto m-2 xs:m-1">
             <ChangeInfo />
           </div>
           
         </CardBody>
-        <CardFooter className="col-span-10 col-start-3  drop-shadow-2xl">
+        <CardFooter className="col-span-12 flex items-center justify-center  drop-shadow-2xl">
             <Button
-              className="gap-2 text-white bg-redDenger hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              className="gap-2 text-white bg-redDenger hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5  py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               onPress={onOpen}
             >
               

@@ -68,11 +68,11 @@ export const Contant = () => {
   return (
     <>
     
-    <Carousel className="max-h-[80vh] overflow-hidden row-start-3 col-start-2 col-span-10  md:row-span-1 md:col-start-3 lg:col-start-3 md:col-span-8 lg:col-span-6 xl:col-span-4 p-6 flex justify-center items-center place-content-center h-auto p-2 rounded-3xl backdrop-blur-lg drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
+    <Carousel className="sm:max-h-[80vh] overflow-hidden row-start-3 col-start-2 col-span-10  md:row-span-1 md:col-start-3 lg:col-start-3 md:col-span-8 lg:col-span-6 xl:col-span-4 p-6 flex justify-center items-center place-content-center h-auto p-2 rounded-3xl backdrop-blur-lg drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
       <CarouselContent className="">
         {data.data.plans.map((plan, index) => (
           <CarouselItem key={index}>
-          <div className=" ">
+          <div className="xs:h-auto xs:w-auto ">
             <div className="text-center text-white pt-10 border-1 border-gray-400 rounded-b-2xl drop-shadow-2xl">
               <h5 className="text-xl font-medium">{plan.title}</h5>
               <h2 className="text-5xl mt-8 mb-3 items-center align-middle"> 

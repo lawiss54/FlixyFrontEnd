@@ -26,28 +26,28 @@ export const BottomBar = () => {
   
     <div className="fixed bottom-0 left-0 right-0 z-60 bg-transparent w-full px-6 sm:px-10 lg:px-20 rounded-t-xl shadow-md">
   <Dock iconMagnification={70} iconDistance={140}  className="w-full">
-    <DockIcon  className="bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 text-black dark:bg-white/10 opacity-85">
-      <Link to={PROFILE_ROUTE}>
+    <DockIcon  className="drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-black dark:bg-white/10 opacity-85 hover:animate-gradient">
+      <Link to={PROFILE_ROUTE} className="hover:text-white hover:scale-150">
         <ion-icon name="finger-print-outline"></ion-icon>
       </Link>
     </DockIcon>
-    <DockIcon className="bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 text-black dark:bg-white/10">
-      <Link to={WALLET_ROUTE}>
+    <DockIcon className="drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-black dark:bg-white/10 hover:animate-gradient">
+      <Link to={WALLET_ROUTE} className="hover:text-white hover:scale-150">
         <ion-icon name="wallet-outline"></ion-icon>
       </Link>
     </DockIcon>
-    <DockIcon className="bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 text-black dark:bg-white/10">
-      <Link to={FLIXY_ROUTE}>
+    <DockIcon className="drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-black dark:bg-white/10 hover:animate-gradient">
+      <Link to={FLIXY_ROUTE} className="hover:text-white hover:scale-150">
         <ion-icon name="apps-outline"></ion-icon>
       </Link>
     </DockIcon>
-    <DockIcon className="bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 text-black dark:bg-white/10">
-      <Link to={SUBSCRIPTION_ROUTE}>
+    <DockIcon className="drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-black  dark:bg-white/10 hover:animate-gradient">
+      <Link to={SUBSCRIPTION_ROUTE} className="hover:text-white hover:scale-150">
         <ion-icon name="key-outline"></ion-icon>
       </Link>
     </DockIcon>
-    <DockIcon className="bg-gradient-to-tl from-blueFiroziD-100/90 via-blueFiroziD-400/90 to-blueFiroziD-600/70 text-black dark:bg-white/10">
-      <Link to={ABOUT_ROUTE}>
+    <DockIcon className="drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-black dark:bg-white/10 hover:animate-gradient">
+      <Link to={ABOUT_ROUTE} className="hover:text-white hover:scale-150">
       <ion-icon  name="mail-outline"></ion-icon>
       </Link>
     </DockIcon>

@@ -16,10 +16,7 @@ export default {
         'xl': '1200px',     // Extra Large (الافتراضي)
       },
   	extend: {
-  	  animation: {
-        'jump7456': 'jump7456 1s ease-in-out infinite',
-        'shadow324': 'shadow324 1.5s ease-in-out infinite',
-      },
+  	  
       keyframes: {
         jump7456: {
           '0%': { transform: 'translateY(0) rotate(0)' },
@@ -32,6 +29,16 @@ export default {
           '0%, 100%': { transform: 'scale(1, 1)' },
           '50%': { transform: 'scale(1.2, 1)' },
         },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      animation: {
+        'jump7456': 'jump7456 1s ease-in-out infinite',
+        'shadow324': 'shadow324 1.5s ease-in-out infinite',
+        'gradient': 'gradient 3s ease infinite',
       },
   	  boxShadow: {
         myShadow1: "4.1px -5px 0 0 rgb(221, 228, 239)",
@@ -153,7 +160,8 @@ export default {
   },
   plugins: [
     require("tailwindcss-animate"),
-    nextui()
+    
+    nextui(),
   ],
 }
 

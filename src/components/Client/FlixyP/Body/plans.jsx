@@ -56,7 +56,7 @@ function Plans() {
           description: res.data.alert.message
         });
         setStatus(false);
-        return queryClient.invalidateQueries({ queryKey: ["orders"] }) && queryClient.invalidateQueries({ queryKey: ["user"] });
+        return queryClient.invalidateQueries({ queryKey: ["orders", "user"] });
       }).catch((e) => {
         toast({
           variant: e.response.data.alert.type,

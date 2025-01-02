@@ -58,10 +58,11 @@ function ChangeInfo(){
           title: res.data.alert.title ,
           description: res.data.alert.message ,
         });
+        return queryClient.invalidateQueries({ queryKey: ["user"] });
       }else{
         return res.data.status;
       }
-      queryClient.fetchQuery(["user"]);
+      
     }).catch((err) => {
        let errorsReponse = err.response.data.errors;
          if("alert" in err.response.data){

@@ -67,15 +67,17 @@ import Cookies from 'js-cookie';
   const {setError, formState} = form;
   const { isSubmitting } = formState;
 
-  // دالة onSubmit لعرض البيانات
+  
 
   const onSubmit = async (values) => {
-    isSubmitting; // تحديث حالة الإرسال
-    return await register(values).than((res)=>{
+     // تحديث حالة الإرسال
+    return await register(values).then((res) => {
+      isSubmitting;
       Cookies.set("authToken", res.data.access_token, { expires: 1 });
       setAuthentication(true);
       return navigate(FLIXY_ROUTE);
     }).catch((error) => {
+      isSubmitting;
       if (error.response && error.response.data) {
       const errorsResponse = error.response.data;
 
@@ -91,7 +93,7 @@ import Cookies from 'js-cookie';
         });
       }
     }
-  })
+    });
   }
   return (
     

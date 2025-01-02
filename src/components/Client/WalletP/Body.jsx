@@ -41,15 +41,15 @@ export const Body = () => {
             </div>
           </CardDescription>
         </CardHeader>
-        <CardContent className=" col-span-12">
-          <div className=" flex items-center  rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
+        <CardContent className=" col-span-12 ">
+          <div className=" flex items-center  rounded-md border border-white border-opacity-40 drop-shadow-lg p-4 mb-3">
             <Wallet className="text-white" />
             <div className="flex-1">
-              <h3 className="text-sm text-white font-medium leading-none">
-                {t("Identité du client : ")}<p className="sm:text-[18px] md:[24px] text-white "> {user.lname+' '+user.fname} </p>
+              <h3 className="text-sm text-white font-medium leading-none pl-3 mb-1">
+                {t("Identité du client : ")}<p className="text-2xl xs:text-[16px] sm:text-[18px] md:[24px] text-white "> {user.lname+' '+user.fname} </p>
               </h3>
-              <h3 className="text-sm text-white font-medium leading-none">
-                {t("Le solde du portefeuille")} : <p className="text-2xl text-white">{user.balance} {t("DA")}</p>
+              <h3 className="text-sm text-white font-medium leading-none pl-3">
+                {t("Le solde du portefeuille")} : <p className="text-2xl xs:text-[16px] sm:text-[18px] md:[24px] text-white text-white">{user.balance} {t("DA")}</p>
               </h3>
             </div>
           </div>
@@ -64,21 +64,21 @@ export const Body = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg p-4">
-                <div className="flex flex-col space-y-4">
-                  <h3 className="text-sm text-white text-[16px] font-bold font-medium text-center leading-relaxed">
+              <div className=" flex items-center space-x-4 rounded-md border border-white border-opacity-40 drop-shadow-lg  mb-3 xs:w-auto">
+                <div className="flex flex-col">
+                  <h3 className="text-sm text-white p-4 text-[16px] xs:text-[12px] font-bold font-medium text-center xs:w-auto leading-relaxed">
                     {t("Transférez la somme demandée sur ce compte par Baridi Mob ou compte bancaire courant.")}
                   </h3>
-                  <h3 className="text-lg pt-5 text-white font-bold font-medium leading-relaxed">
+                  <h3 className="text-lg xs:text-[15px] xs:p-2 text-white font-bold font-medium leading-relaxed">
                     RIP Baridi Mob : 00799999002476295067
                   </h3>
-                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
+                  <h3 className="text-lg xs:text-[15px] xs:p-2 text-white font-bold font-medium leading-relaxed">
                     CCP : 24762950 Clé 66
                   </h3>
-                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
+                  <h3 className="text-lg xs:text-[15px] xs:p-2 text-white font-bold font-medium leading-relaxed">
                     Le titulaire : M.OUADDAH CHERIF
                   </h3>
-                  <h3 className="text-lg text-white font-bold font-medium leading-relaxed">
+                  <h3 className="text-lg xs:text-[15px] xs:p-2 text-white font-bold font-medium leading-relaxed">
                     Frais de transfert : 30 DA
                   </h3>
                   <div className=" flex text-center text-[18px] font-bold items-center space-x-4 rounded-md border border-blue-300 border-opacity-40 drop-shadow-lg p-4">
@@ -86,7 +86,7 @@ export const Body = () => {
                   </div>
                 </div>
               </div>
-              <div className=" flex items-center md:place-content-center space-x-4 rounded-md border p-4 border border-white border-opacity-40 drop-shadow-lg">
+              <div className=" flex items-center md:place-content-center space-x-4 rounded-md border p-4 border border-white border-opacity-40 drop-shadow-lg mb-3">
                 <FormWallet />
               </div>
             </motion.div>

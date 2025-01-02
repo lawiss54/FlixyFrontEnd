@@ -36,7 +36,10 @@ export const ClientApi = {
   },
   
   updateUser: async (values)=>{
-    return await axiosClient.post('reset-password', values);
+    return await axiosClient.post('update-profile', values);
+  },
+  sendMessage: async (values)=>{
+    return await axiosClient.post('send-message', values);
   },
   
   logout: async () => {
