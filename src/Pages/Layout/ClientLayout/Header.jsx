@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "../../../index.css";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
@@ -17,15 +16,15 @@ import Cookies from 'js-cookie';
 
 export const HeaderNavClient = () => {
   
-   const {t} = useTranslation();
+  const {t} = useTranslation();
   const {Authentication, setLang, logout, lang} = useClientContext();
   const navigate = useNavigate();
   
   useEffect(() => {
-  const handleLanguageChange = (lang) => {
-    setLang(Cookies.get("i18next") || 'fr'); // تحديث اللغة في الحالة
-    document.documentElement.dir = i18n.dir(lang); // تحديث اتجاه النص بناءً على اللغة
-  };
+    const handleLanguageChange = (lang) => {
+      setLang(Cookies.get("i18next") || 'fr'); // تحديث اللغة في الحالة
+      document.documentElement.dir = i18n.dir(lang); // تحديث اتجاه النص بناءً على اللغة
+    };
 
   // الاشتراك في الحدث عند تغيير اللغة
   i18n.on("languageChanged", handleLanguageChange);
@@ -58,13 +57,13 @@ export const HeaderNavClient = () => {
 
 
   return (
-    <header className="w-full">
+    <header className="w-full fixed top-0">
       <Navbar isBordered classNames="w-full">
         <NavbarBrand justify="start">
           <HeaderLogo />
           <p>Flixy</p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex">
+        <NavbarContent className="hidden xs-sm:flex">
           <NavbarItem isActive={ChangeStatus(FLIXY_ROUTE)}>
             <Link color="foreground" to={FLIXY_ROUTE}>
               {t("Flixy")}
@@ -81,9 +80,9 @@ export const HeaderNavClient = () => {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent justify="" className="w-auto">
+        <NavbarContent justify="end" className="w-auto">
           <NavbarItem>
-            <Dropdown placement="bottom-start" className="bg-white/80"  >
+            <Dropdown placement="bottom-start" className="bg-white/90"  >
               <DropdownTrigger>
                 <Button variant="bordered"><Languages /> {t("Langue")}</Button>
               </DropdownTrigger>

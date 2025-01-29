@@ -39,7 +39,7 @@ function App() {
   
   
   return(
-    
+    <>
     <div className="bg-[#DDE4EF] bg-auto font-primary  mx-auto h-full w-full">
       <ClientContext>
         <HelmetProvider>
@@ -55,6 +55,7 @@ function App() {
         </HelmetProvider>
       </ClientContext>
     </div>
+    </>
   );
 }
 

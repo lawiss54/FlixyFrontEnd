@@ -87,7 +87,7 @@ export const ClientLayouts = () => {
             height: '',
             boxShadow: "0 8px 12px rgba(0, 0, 0, 0.3)",
           }}>
-        <HeaderNavClient className="z-50" />
+        <HeaderNavClient className="" />
       </Header>
 
       {/* Main Content */}
