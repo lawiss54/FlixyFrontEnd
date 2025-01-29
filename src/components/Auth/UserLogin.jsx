@@ -39,8 +39,8 @@ const formSchema = z.object({
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "admin@admin.com",
+      password: "admin",
     },
   });
   
@@ -90,6 +90,7 @@ const formSchema = z.object({
               <FormLabel className="text-white">{t("Email")}</FormLabel>
               <FormControl className="text-black">
                 <Input value='admin@admin.com' style={{borderRadius:'10px' }} placeholder="email@gmail.com" {...field} />
+              <span>is : admin@admin.com</span>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -103,6 +104,7 @@ const formSchema = z.object({
               <FormLabel className="text-white">{t("Mot de passe")}</FormLabel>
               <FormControl className="text-black">
                 <Input value='admin' style={{borderRadius:'10px' }} placeholder="******" type="password" {...field} />
+              <span>is: admin</span>
               </FormControl>
                 <AlertDescription>
                   <FormMessage />
