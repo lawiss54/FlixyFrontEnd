@@ -32,7 +32,7 @@ const formSchema = z.object({
     .min(1, { message: t("Le champ email est obligatoire.") })
     .email({message: t("Veuillez entrer une adresse email valide dans le champ 'Email'.")}),
   password: z.string()
-    .min(6, { message: t("Veuillez entrer un mot de passe d'au moins 6 caractères") }),
+    .min(3, { message: t("Veuillez entrer un mot de passe d'au moins 6 caractères") }),
 });
   
   // Validation data form
@@ -89,7 +89,7 @@ const formSchema = z.object({
             <FormItem>
               <FormLabel className="text-white">{t("Email")}</FormLabel>
               <FormControl className="text-black">
-                <Input style={{borderRadius:'10px' }} placeholder="email@gmail.com" {...field} />
+                <Input value='admin@admin.com' style={{borderRadius:'10px' }} placeholder="email@gmail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -102,7 +102,7 @@ const formSchema = z.object({
             <FormItem>
               <FormLabel className="text-white">{t("Mot de passe")}</FormLabel>
               <FormControl className="text-black">
-                <Input style={{borderRadius:'10px' }} placeholder="******" type="password" {...field} />
+                <Input value='admin' style={{borderRadius:'10px' }} placeholder="******" type="password" {...field} />
               </FormControl>
                 <AlertDescription>
                   <FormMessage />
